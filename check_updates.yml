@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name:
+      apt:
+       update_cache: yes
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+    - name:
+      command: apt list --upgradable
+      register: updates
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+    - debug: var=updates.stdout_lines
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+    - name: check for updates (yum)
+      yum: list=updates update_cache=true
+      register: yumoutput
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+    - debug: msg="{{ yumoutput.results | map(attribute='name') | join(', ')}}"
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+    #- debug: msg="{{ yumoutput.results | map(attribute='name') }}" 
+#    - debug: msg="{{ yumoutput.results | selectattr('name', 'defined') | map(attribute='name') }} {{ yumoutput.results | selectattr('yumstate', 'defined') | map(attribute='yumstate') }}"
+#    - debug: 
+#        msg: 
+#          - "{{ yumoutput.results }}" 
+#          - ""
+#          #- " name {{ yumoutput.results.name }}" 
+#        sites_dict: "{{ yumoutput.results | items2dict(key_name='name', value_name='version') }}"
+#       msg: "{{ yumoutput.results | map(attribute='yumstate')}}"
+#       msg: "{{ yumoutput.results | map(attribute='yumstate') | list }} 
+#      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
