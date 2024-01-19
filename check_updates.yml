@@ -1,6 +1,8 @@
 ---
 - hosts: all
   become: true
+  ansible_become_method: 'su'
+  ansible_become_exe: 'sudo -p "Password: " su -'
   tasks:
     - name:
       apt:
