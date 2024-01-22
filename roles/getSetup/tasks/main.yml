@@ -1,4 +1,3 @@
-remote_user: ansible
 tasks:
   - name: get setup 
     setup:
