@@ -1,9 +1,9 @@
 ---
-  - hosts: localhost
-    become: true
-    remote_user: ansible
-    tasks:
-      - name: get setup 
-        setup:
+- hosts: localhost
+  become: true
+  remote_user: ansible
+  tasks:
+    - name: get setup 
+      setup:
   
     
