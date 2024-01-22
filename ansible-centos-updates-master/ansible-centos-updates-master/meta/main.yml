@@ -1,9 +1,9 @@
 ---
 galaxy_info:
-  author: "Martin Zehetmyer"
+  author: "Giuseppe Cirillo"
   description: 'Update tasks for RHEL/Centos'
-  company: MaibornWolff
-  license: Apache License 2.0
+  company: Criticalservice
+  license: Opem
   min_ansible_version: '2.2'
   platforms:
     - name: EL
