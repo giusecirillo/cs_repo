@@ -1,7 +1,10 @@
-- name: Update repository cache
-  ansible.builtin.apt:
-    update_cache: yes
-    cache_valid_time: 3600
-  when: ansible_distribution == "Ubuntu" and (ansible_distribution_major_version == "22" or ansible_distribution_major_version == "20")
-  tags:
-    - update_repo
+---
+- hosts: all
+  tasks:
+  - name: Update repository cache
+    ansible.builtin.apt:
+      update_cache: yes
+      cache_valid_time: 3600
+    when: ansible_distribution == "Ubuntu" and (ansible_distribution_major_version == "22" or ansible_distribution_major_version == "20")
+    tags:
+      - update_repo
