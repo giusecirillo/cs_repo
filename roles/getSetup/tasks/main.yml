@@ -1,4 +1,13 @@
-- name: get setup 
-  setup:
+  name: Play1
+
+  hosts: localhost
+
+  become: true
+
+  remote_user: ansible
+
+  tasks:
+    - name: get setup 
+      setup:
   
     
