@@ -1,5 +1,7 @@
 tasks:
   - name: get setup 
     setup:
+  - name: list setup 
+    debug:
   
     
