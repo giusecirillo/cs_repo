@@ -18,6 +18,4 @@
     - debug: msg="{{ yumoutput.results | map(attribute='name') | join(', ')}}"
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     - debug: msg="{{ yumoutput.results | map(attribute='name') }}" 
-#    - debug: msg="{{ yumoutput.results | selectattr('name', 'defined') | map(attribute='name') }} {{ yumoutput.results | selectattr('yumstate', 'defined') | map(attribute='yumstate') }}"
-#    - debug: msg="{{ yumoutput.results }}" 
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
