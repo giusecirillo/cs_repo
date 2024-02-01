@@ -19,12 +19,12 @@
       when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
     #- debug: msg="{{ yumoutput.results | map(attribute='name') }}" 
 #    - debug: msg="{{ yumoutput.results | selectattr('name', 'defined') | map(attribute='name') }} {{ yumoutput.results | selectattr('yumstate', 'defined') | map(attribute='yumstate') }}"
-#    - debug: 
-#        msg: 
-#          - "{{ yumoutput.results }}" 
+    - debug: 
+        msg: 
+          - "{{ yumoutput.results }}" 
 #          - ""
 #          #- " name {{ yumoutput.results.name }}" 
 #        sites_dict: "{{ yumoutput.results | items2dict(key_name='name', value_name='version') }}"
 #       msg: "{{ yumoutput.results | map(attribute='yumstate')}}"
 #       msg: "{{ yumoutput.results | map(attribute='yumstate') | list }} 
-#      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
