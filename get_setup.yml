@@ -1,5 +1,5 @@
 ---
-- hosts: linux
+- hosts: all
   become: true
   roles:
     - getSetup
