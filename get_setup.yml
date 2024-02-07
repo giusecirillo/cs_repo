@@ -2,4 +2,4 @@
 - hosts: linux
   become: true
   roles:
-    - get_setup
+    - getSetup
