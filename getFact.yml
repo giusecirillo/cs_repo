@@ -7,5 +7,5 @@
         #fact_path: /etc/ansible/facts.d
         #gather_timeout: 11
     - name: Print
-      debug: "{{ ansible_facts }}"
-        #msg: "{{ setup }}"
+      debug: 
+        msg: "{{ ansible_facts }}"
