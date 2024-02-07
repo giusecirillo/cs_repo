@@ -12,5 +12,5 @@
         #gather_timeout: 11
     - name: Print
       ansible.builtin.debug: 
-        msg: "{{ansible_ssh_password}}"
+        msg: "{{ansible_distribution}}"
         
