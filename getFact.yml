@@ -2,4 +2,4 @@
   tasks:
     - name: get setup
       ansible.builtin.setup:
-        var: setup
+        var: fact_path
