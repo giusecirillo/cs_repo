@@ -6,5 +6,5 @@
         gather_subset: ["all"]
         fact_path: /etc/ansible/facts.d
         gather_timeout: 11
-      debug:
-        msg: ansible_facts
+        debug:
+          msg: ansible_facts
