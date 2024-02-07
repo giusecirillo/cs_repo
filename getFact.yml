@@ -2,4 +2,4 @@
   tasks:
     - name: get setup
       ansible.builtin.setup:
-        msg: "Ciao!"
+        var: setup
