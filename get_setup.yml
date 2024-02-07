@@ -1,8 +1,8 @@
-- name: Hello World Sample
+- name: get Setup
   hosts: all
   become: true
   tasks:
-    - name: get setup 
+    - name: get setup
       ansible.builtin.setup:
-    - name: list setup 
+    - name: list setup
       ansible.builtin.debug:
