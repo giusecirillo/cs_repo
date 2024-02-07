@@ -1,6 +1,5 @@
----
+hosts: all
 - name: get Setup
-  hosts: all
   tasks:
     - name: get setup
       ansible.builtin.setup:
