@@ -1,5 +1,6 @@
-- hosts: all
-  tasks:
-    - name: get setup
-      setup:
-        register: setup
+- name: Gather facts
+  setup:
+    filter: "*"
+    gather_subset: ["all"]
+    fact_path: /etc/ansible/facts.d
+    gather_timeout: 11
