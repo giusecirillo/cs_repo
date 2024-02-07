@@ -1,4 +1,4 @@
----
+- name: GET
 - hosts: all
   tasks:
     - name: get setup
