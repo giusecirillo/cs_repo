@@ -1,6 +1,6 @@
 - name: get Setup
   hosts: all
-    tasks:
+  tasks:
     - name: get setup
       ansible.builtin.setup:
     - name: Print all available facts
