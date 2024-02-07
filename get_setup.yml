@@ -1,5 +1,4 @@
----
-- hosts: all
-  become: true
-  roles:
-    - getSetup
+ - name: get setup 
+    ansible.builtin.setup:
+  - name: list setup 
+    ansible.builtin.debug:
