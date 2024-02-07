@@ -1,5 +1,5 @@
 - hosts: all
   tasks:
-    name: get setup
-    ansible.builtin.setup:
-      msg: "Ciao!"
+    - name: get setup
+      ansible.builtin.setup:
+        msg: "Ciao!"
