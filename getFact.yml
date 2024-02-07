@@ -12,5 +12,5 @@
         #gather_timeout: 11
     - name: Print
       ansible.builtin.debug: 
-        msg: "{{item.key}}"
+        msg: "{{infoVM.key}}"
         
