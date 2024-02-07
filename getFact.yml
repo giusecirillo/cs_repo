@@ -1,8 +1,8 @@
-- name: GET
-  hosts: all
+- hosts: all
   tasks:
     - name: get setup
       ansible.builtin.setup:
+      register: setup
     - name: Print all available facts
       ansible.builtin.debug:
       var: ansible_facts
