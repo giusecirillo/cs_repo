@@ -3,6 +3,8 @@
   tasks:
     - name: Gather facts
       ansible.builtin.setup:
+        gather_subset:
+          - '!all'
       register: infoVM
         #filter: "*"
         #gather_subset: ["all"]
