@@ -9,4 +9,4 @@
         #gather_timeout: 11
     - name: Print
       debug: 
-        var: "{{ infoVM.stdout }}"
+        var: "{{ infoVM }}"
