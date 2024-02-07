@@ -1,5 +1,8 @@
 - name: get Setup
   hosts: all
-  - name: Print all available facts
-    ansible.builtin.debug:
-    var: ansible_facts
+    tasks:
+    - name: get setup
+      ansible.builtin.setup:
+    - name: Print all available facts
+      ansible.builtin.debug:
+      var: ansible_facts
