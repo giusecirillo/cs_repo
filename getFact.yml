@@ -8,4 +8,4 @@
         #gather_timeout: 11
     - name: Print
       debug: 
-        var: ansible_facts
+        var: ansible_facts.stdout
