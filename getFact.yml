@@ -2,10 +2,11 @@
   tasks:
     - name: Gather facts
       setup:
+      register: infoVM
         #filter: "*"
         #gather_subset: ["all"]
         #fact_path: /etc/ansible/facts.d
         #gather_timeout: 11
     - name: Print
       debug: 
-        var: ansible_facts.stdout
+        var: infoVM.stdout
