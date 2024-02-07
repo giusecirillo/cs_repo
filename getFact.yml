@@ -10,4 +10,4 @@
         #gather_timeout: 11
     - name: Print
       ansible.builtin.debug: 
-        var: infoVM 
+        
