@@ -2,6 +2,4 @@
   tasks:
     - name: get setup
       ansible.builtin.setup:
-    - name: Print all available facts
-      ansible.builtin.debug:
-      msg: ansible_facts
+      msg:    
