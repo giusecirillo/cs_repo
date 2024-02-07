@@ -1,5 +1,5 @@
 - hosts: all
-  gather_facts: yes
+  gather_facts: no
   tasks:
     - name: Gather facts
       ansible.builtin.setup:
@@ -12,4 +12,5 @@
         #gather_timeout: 11
     - name: Print
       ansible.builtin.debug: 
+        msg: "{{ infoVM.stdout }}"
         
