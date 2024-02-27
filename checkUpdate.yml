@@ -6,7 +6,6 @@
 - name: Play 1 - Install updates - the Ansible controler
   hosts: all
   remote_user: ansible
-  become_method: sudo
   become: yes
   vars:
     run: false
