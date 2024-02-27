@@ -10,6 +10,9 @@
         #gather_subset: ["all"]
         #fact_path: /etc/ansible/facts.d
         #gather_timeout: 11
+    - name: Print infoVM
+      ansible.builtin.debug:
+        msg: "{{infoVM}} {{ansible_distribution_release}}"
     - name: Print Linux
       ansible.builtin.debug:
         msg: "{{ansible_distribution}} {{ansible_distribution_release}}"
