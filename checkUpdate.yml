@@ -1,0 +1,62 @@
+########################################################################
+#######################################################################
+# Play 1 - Do updates for host
+# ########################################################################
+########################################################################
+- name: Play 1 - Install updates - the Ansible controler
+  hosts: all
+  remote_user: ansible
+  become_method: sudo
+  become: yes
+  vars:
+    run: false
+    reboot: false
+  tasks:
+# do an "yum
+    - name: check for updates (yum)
+      yum: list=updates update_cache=true
+      register: yumoutput
+      when: ansible_distribution == 'Rocky'
+        #- debug:
+        #msg= "{{ yumoutput}}"
+        #when: ansible_distribution == 'Rocky'
+
+# do an "apt-get update", to ensure latest package lists
+    - name: Apt-get update
+      ansible.builtin.apt:
+        update-cache: true
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
+# get a list of packages that have updates
+    - name: Get list of pending upgrades
+      ansible.builtin.command: sudo apt-get --simulate dist-upgrade
+        #args:
+        # warn: false # don't warn us about apt having its own plugin
+      register: apt_simulate
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+    - debug:
+        var: apt_simulate
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+# pick out list of pending updates from command output. This essentially
+# takes the above output from "apt-get --simulate dist-upgrade", and
+# pipes it through "cut -f2 -d' ' | sort"
+    - name: Parse apt-get output to get list of changed packages
+      ansible.builtin.set_fact:
+        updates: '{{ apt_simulate.stdout_lines | select("match", "^Inst ") | list | sort }}'
+      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+
+# tell user about packages being updated
+    - name: Show pending updates
+      ansible.builtin.debug:
+        var: updates
+      when: updates.0 is defined and ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
+# Windows
+    - name: WINDOWS log to C:\ansible_wu.txt
+      ansible.windows.win_updates:
+        category_names: SecurityUpdates
+        state: searched
+      register: ansible_wu
+      when: distribution == "Windows"
+    - debug:
+        var: ansible_wu
+      when: distribution == "Windows"
