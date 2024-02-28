@@ -1,61 +1,55 @@
 ########################################################################
 #######################################################################
-# Play 1 - Do updates for host
+# PlayBook create by Cirillo Giuseppe
 # ########################################################################
 ########################################################################
-- name: Play 1 - Install updates - the Ansible controler
+- name: PlayBook for Install updates on ALL HOSTS
   hosts: all
   remote_user: ansible
+  become_method: sudo
   become: yes
   vars:
     run: false
     reboot: false
   tasks:
-# do an "yum
-    - name: check for updates (yum)
-      yum: list=updates update_cache=true
+# Linux YUM
+    - name: LINUX (YUM)
+      dnf: list=upgrades
       register: yumoutput
       when: ansible_distribution == 'Rocky'
-        #- debug:
-        #msg= "{{ yumoutput}}"
-        #when: ansible_distribution == 'Rocky'
+    - debug:
+        msg: "{{yumoutput.msg}}"
+      when: ansible_distribution == 'Rocky'
 
-# do an "apt-get update", to ensure latest package lists
-    - name: Apt-get update
+# Linux APT
+    - name: LINUX (APT-UPDATE-CACHE)
       ansible.builtin.apt:
         update-cache: true
       when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
-
-# get a list of packages that have updates
-    - name: Get list of pending upgrades
-      ansible.builtin.command: sudo apt-get --simulate dist-upgrade
-        #args:
-        # warn: false # don't warn us about apt having its own plugin
+    - name: LINUX (APT-LIST)
+      ansible.builtin.command: apt list --upgradable
       register: apt_simulate
       when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
     - debug:
-        var: apt_simulate
-      when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
-# pick out list of pending updates from command output. This essentially
-# takes the above output from "apt-get --simulate dist-upgrade", and
-# pipes it through "cut -f2 -d' ' | sort"
-    - name: Parse apt-get output to get list of changed packages
-      ansible.builtin.set_fact:
-        updates: '{{ apt_simulate.stdout_lines | select("match", "^Inst ") | list | sort }}'
+        var: apt_simulate.msg
       when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 
-# tell user about packages being updated
-    - name: Show pending updates
-      ansible.builtin.debug:
-        var: updates
-      when: updates.0 is defined and ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
 # Windows
-    - name: WINDOWS log to C:\ansible_wu.txt
+    - name: WINDOWS
       ansible.windows.win_updates:
         category_names: SecurityUpdates
         state: searched
       register: ansible_wu
       when: distribution == "Windows"
-    - debug:
-        var: ansible_wu
+    - name: Create Dictionary from var ansible_wu
+      set_fact:
+        title: "{{ansible_wu.filtered_updates}}"
+      when: distribution == "Windows"
+    - name: Create Final log
+      set_fact:
+        titles: "{{title | json_query('*.title')}}"
+      when: distribution == "Windows"
+    - name: Print final Log
+      debug:
+        msg: "{{titles}}"
       when: distribution == "Windows"
