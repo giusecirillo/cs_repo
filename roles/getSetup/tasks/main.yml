@@ -1,6 +1,0 @@
-  - name: get setup 
-    ansible.builtin.setup:
-  - name: list setup 
-    ansible.builtin.debug:
-  
-    
