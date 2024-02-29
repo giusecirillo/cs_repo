@@ -7,7 +7,7 @@
   hosts: all
   remote_user: ansible
   become_method: sudo
-  become: no
+  become: True
   vars:
     run: false
     reboot: false
