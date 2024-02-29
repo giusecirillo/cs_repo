@@ -27,7 +27,7 @@
         update-cache: true
       when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
     - name: LINUX (APT-LIST)
-      ansible.builtin.command: sudo apt list --upgradable
+      ansible.builtin.command: apt list --upgradable
       register: apt_simulate
       when: ansible_distribution == "Ubuntu" or ansible_distribution == "Debian"
     - debug:
