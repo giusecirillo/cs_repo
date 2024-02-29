@@ -43,14 +43,14 @@
       register: ansible_wu
       when: distribution == "Windows"
     - name: Create Dictionary from var ansible_wu
-      debug: msg={{ output.stdout|ansible_wu }}
+      debug: msg={{ (output.stdout | from_json | first).filtered_updates }}
     #  set_fact:
     #    title: "{{ansible_wu.filtered_updates}}"
     #  when: distribution == "Windows"
-    - name: Create Final log
-      set_fact:
-        titles: "{{title | community.general.json_query('*.title')}}"
-      when: distribution == "Windows"
+    #- name: Create Final log
+    #  set_fact:
+    #    titles: "{{title | community.general.json_query('*.title')}}"
+    #  when: distribution == "Windows"
     - name: Print final Log
       debug:
         msg: "{{titles}}"
