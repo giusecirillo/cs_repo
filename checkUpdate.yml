@@ -53,5 +53,5 @@
     #  when: distribution == "Windows"
     - name: Print final Log
       debug:
-        msg: "{{ ansible_wu.updates.kb | list }}"
+        msg: "{{ ansible_wu.updates.27172c0c-914f-450a-a316-7ef052cce733 | list }}"
       when: distribution == "Windows"
