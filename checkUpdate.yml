@@ -43,7 +43,7 @@
       register: ansible_wu
       when: distribution == "Windows"
     - name: Create Dictionary from var ansible_wu
-      debug: msg={{ (ansible_wu |  from_json) }}
+      debug: msg={{ ("{{ansible_wu}}" |  from_json) }}
     #  set_fact:
     #    title: "{{ansible_wu.filtered_updates}}"
     #  when: distribution == "Windows"
