@@ -5,7 +5,7 @@
 ########################################################################
 - name: PlayBook for Install updates on ALL HOSTS
   hosts: all
-  gather_facts: yes
+  gather_facts: no
   remote_user: ansible
   #become_method: sudo
   become: True
