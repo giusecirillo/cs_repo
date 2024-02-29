@@ -53,5 +53,5 @@
     #  when: distribution == "Windows"
     - name: Print final Log
       debug:
-        msg: "{{ ansible_wu.filtered_updates | dict2items | map(attribute="title") | list }}"
+        msg: "{{ ansible_wu.filtered_updates | dict2items | map(attribute='title') | list }}"
       when: distribution == "Windows"
