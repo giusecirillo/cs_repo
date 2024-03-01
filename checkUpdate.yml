@@ -59,7 +59,7 @@
      #   msg: "{{ ansible_wu | list }}"
      # when: ansible_pkg_mgr == 'win'
         msg: |
-           {% for k in ansible_wu.updates | list %}
-           {{ ansible_wu.updates[k].title }}
+           {% for k in ansible_wu.updates %}
+           {{ ansible_wu.updates[k].title | list}}
            {% endfor %} 
       when: ansible_pkg_mgr == 'win'
