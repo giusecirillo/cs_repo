@@ -53,5 +53,5 @@
     #  when: distribution == "Windows"
     - name: Print final Log
       debug:
-        msg: "{{ ansible_wu.filtered_updates | list }}"
+        msg: "{{ ansible_wu | grep title }}"
       when: ansible_pkg_mgr == 'win'
