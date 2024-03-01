@@ -56,8 +56,6 @@
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
       customization:
-        disk:
-          - size_gb: "{{disk_size_gb}}"
         hostname: "{{ vm_hostname }}"
         dns_servers:
             - "{{dns_servers[0]}}"
