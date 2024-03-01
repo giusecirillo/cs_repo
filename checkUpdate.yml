@@ -58,7 +58,7 @@
       debug:
      #   msg: "{{ ansible_wu | list }}"
      # when: ansible_pkg_mgr == 'win'
-        msg:  | list |
+        msg: |
            {% for k in ansible_wu.updates %}
            {{ ansible_wu.updates[k].title }}
            {% endfor %}
