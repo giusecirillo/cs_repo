@@ -53,5 +53,7 @@
     #  when: distribution == "Windows"
     - name: Print final Log
       debug:
-        msg: "{{ ansible_wu | grep "title" }}"
-      when: ansible_pkg_mgr == 'win'
+     #   msg: "{{ ansible_wu | list }}"
+     # when: ansible_pkg_mgr == 'win'
+        msg: '{{ item }}'
+      loop: '{{ ansible_wu | from_yaml_all | list }}'
