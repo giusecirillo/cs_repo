@@ -38,7 +38,10 @@
 # Windows
     - name: WINDOWS
       ansible.windows.win_updates:
-        category_names: SecurityUpdates
+        category_names: 
+          - SecurityUpdates
+          - CriticalUpdates
+          - Updates
         state: searched
       register: ansible_wu
       when: ansible_pkg_mgr == 'win'
@@ -55,6 +58,8 @@
       debug:
      #   msg: "{{ ansible_wu | list }}"
      # when: ansible_pkg_mgr == 'win'
-        msg: '{{ item }}'
-      loop: '{{ ansible_wu.filtered_updates | list }}'
+        msg: |
+           {% for k in ansible_wu.updates %}
+           {{ ansible_wu.updates[k].title }}
+           {% endfor %}
       when: ansible_pkg_mgr == 'win'
