@@ -9,9 +9,9 @@
 # Linux YUM
   - name: Clone a virtual machine from Linux template and customize
     community.vmware.vmware_guest:
-      hostname: "{{vcenter_hostname}}"
-      username: "{{vcenter_username}}"
-      password: "{{vcenter_password}}"
+      #hostname: "{{vcenter_hostname}}"
+      #username: "{{vcenter_username}}"
+      #password: "{{vcenter_password}}"
       datacenter: "{{vcenter_name}}"
       validate_certs: no
       folder: "{{vcenter_folder}}"
