@@ -41,7 +41,7 @@
         category_names: SecurityUpdates
         state: searched
       register: ansible_wu
-      when: distribution == "Windows"
+      when: ansible_pkg_mgr == 'win'
     #- name: Create Dictionary from var ansible_wu
     #  debug: msg={{ ("{{ansible_wu}}" |  from_json) }}
     #  set_fact:
@@ -54,4 +54,4 @@
     - name: Print final Log
       debug:
         msg: "{{ ansible_wu.filtered_updates | list }}"
-      when: distribution == "Windows"
+      when: ansible_pkg_mgr == 'win'
