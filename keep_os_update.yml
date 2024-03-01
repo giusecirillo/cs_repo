@@ -1,5 +1,0 @@
----
-- hosts: linux
-  become: true
-  roles:
-    - keep_os_update
