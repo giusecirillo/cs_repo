@@ -1,0 +1,29 @@
+########################################################################
+#######################################################################
+# PlayBook create by Cirillo Giuseppe
+# ########################################################################
+########################################################################
+- name: PlayBook for Install WinVM on Datacenter DEV
+  hosts: localhost
+  tasks:
+  - name: Clone a virtual machine from Windows template and customize
+    community.vmware.vmware_guest:
+      hostname: "{{vcenter_hostname}}"
+      username: "{{vcenter_username}}"
+      password: "{{vcenter_password}}"
+      datacenter: "{{vcenter_name}}"
+      validate_certs: no
+      folder: "{{vcenter_folder}}"
+      cluster: Valgioie
+      name: "{{vm_hostname}}"
+      template: TEMPLATE_W2022STD_New
+      networks:
+        - name: "{{network_name}}"
+          ip: "{{network_ip}}"
+          netmask: 255.255.255.0
+          gateway: "{{network_gw}}"
+          domain: WORKGROUP
+          dns_servers:
+            - "{{dns_servers[0]}}"
+            - "{{dns_servers[1]}}"
+          type: "{{ip_mode}}"
