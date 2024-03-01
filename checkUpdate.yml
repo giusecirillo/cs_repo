@@ -56,5 +56,5 @@
      #   msg: "{{ ansible_wu | list }}"
      # when: ansible_pkg_mgr == 'win'
         msg: '{{ item }}'
-      loop: '{{ ansible_wu.filtered_updates | from_yaml_all | list }}'
+      loop: '{{ ansible_wu.filtered_updates | list }}'
       when: ansible_pkg_mgr == 'win'
