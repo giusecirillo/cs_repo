@@ -1,7 +1,6 @@
 - name: Playbook for Resize FS
   hosts: "{{vm_hostname}}"
-  set_fact:
-        ansible_ssh_host: "{{ network_ip }}"
+  ansible_ssh_host: "{{ network_ip }}"
   gather_facts: no
   remote_user: ansible
   #become_method: sudo
