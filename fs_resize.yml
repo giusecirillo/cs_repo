@@ -1,4 +1,12 @@
- - name: Join domain 
+########################################################################
+#######################################################################
+# PlayBook create by Cirillo Giuseppe
+# ########################################################################
+########################################################################
+- name: PlayBook for Install VM on Datacenter
+  hosts: localhost
+  tasks:
+  - name: Join domain 
     ansible.builtin.command:
       cmd: /home/ansible/resize_fs.sh
     register: fs_resize
