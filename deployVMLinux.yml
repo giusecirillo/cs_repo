@@ -64,3 +64,10 @@
       wait_for_customization: "false"
       wait_for_ip_address: "false"
     register: deploy
+  - name: Pause for 5 minutes to build app cache
+    ansible.builtin.pause:
+      minutes: 2
+  - name: Join domain 
+    ansible.builtin.command:
+      cmd: /home/ansible/resize_fs.sh
+    register: fs_resize
