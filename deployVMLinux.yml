@@ -66,5 +66,5 @@
     register: deploy
   - name: Join domain 
     ansible.builtin.command:
-      cmd: /home/ansible/bin/resize_fs.sh
+      cmd: /home/ansible/resize_fs.sh
     register: fs_resize
