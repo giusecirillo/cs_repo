@@ -1,4 +1,4 @@
-- name: PlayBook for Install updates on ALL HOSTS
+- name: Playbook for Resize FS
   hosts: "{{vm_hostname}}"
   gather_facts: no
   remote_user: ansible
