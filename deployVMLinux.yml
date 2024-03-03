@@ -4,7 +4,7 @@
 # ########################################################################
 ########################################################################
 - name: PlayBook for Install VM on Datacenter
-  hosts: localhost
+  hosts: "{{vm_hostname}}"
   tasks:
 # Linux YUM
   - name: Clone a virtual machine from Linux template and customize
