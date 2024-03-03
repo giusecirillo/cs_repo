@@ -5,6 +5,7 @@
 ########################################################################
 - name: PlayBook for Install VM on Datacenter
   hosts: localhost
+  become: True
   tasks:
 # Linux YUM
   - name: Clone a virtual machine from Linux template and customize
@@ -64,10 +65,10 @@
       wait_for_customization: "false"
       wait_for_ip_address: "false"
     register: deploy
-  - name: Pause for 5 minutes to build app cache
+  - name: Pause for 2 minutes to build app cache
     ansible.builtin.pause:
       minutes: 2
-  - name: Join domain 
+  - name: Resize FS 
     ansible.builtin.command:
       cmd: /bin/sh /home/ansible/bin/resize_fs.sh
     register: fs_resize
