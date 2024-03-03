@@ -5,6 +5,9 @@
 ########################################################################
 - name: PlayBook for Install VM on Datacenter
   hosts: localhost
+  remote_user: ansible
+  #become_method: sudo
+  become: True
   tasks:
   - name: Join domain 
     ansible.builtin.command:
