@@ -1,12 +1,9 @@
 - name: PlayBook for Install updates on ALL HOSTS
-  hosts: all
+  hosts: "{{vm_hostname}}"
   gather_facts: no
   remote_user: ansible
   #become_method: sudo
   become: True
-  vars:
-    run: false
-    reboot: false
   tasks:
   - name: Resize FS 
     ansible.builtin.command:
