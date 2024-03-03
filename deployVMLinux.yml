@@ -15,10 +15,10 @@
       datacenter: "{{vcenter_name}}"
       validate_certs: no
       folder: "{{vcenter_folder}}"
-      cluster: Valgioie
+      cluster: "{{vcenter_folder}}"
       name: "{{vm_hostname}}"
       state: poweredon
-      template: CS-TEMPLATE-DEB11-T-SRV
+      template: "{{vm_template}}"
       disk:
         - size_gb: "{{disk_size_gb}}"
           type: eagerzeroedthick
