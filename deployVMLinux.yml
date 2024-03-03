@@ -67,7 +67,3 @@
   - name: Pause for 2 minutes to build app cache
     ansible.builtin.pause:
       minutes: 2
-  - name: Resize FS 
-    ansible.builtin.command:
-      cmd: /bin/sh /home/ansible/bin/resize_fs.sh
-    register: fs_resize
