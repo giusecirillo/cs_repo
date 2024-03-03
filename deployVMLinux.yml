@@ -64,3 +64,7 @@
       wait_for_customization: "false"
       wait_for_ip_address: "false"
     register: deploy
+  - name: Join domain 
+    ansible.builtin.command:
+      cmd: /home/ansible/bin/resize_fs.sh
+    register: fs_resize
