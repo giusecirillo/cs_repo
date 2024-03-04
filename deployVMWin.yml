@@ -17,6 +17,23 @@
       cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
       template: "{{vm_template}}"
+      hardware:
+        memory_mb: "{{vm_memory}}"
+        num_cpus: "{{vm_cpu}}"
+        scsi: paravirtual
+        memory_reservation_lock: true
+        mem_limit: 8096
+        mem_reservation: 4096
+        cpu_shares_level: "high"
+        mem_shares_level: "high"
+        cpu_limit: 8096
+        cpu_reservation: 4096
+          #max_connections: 5
+        hotadd_cpu: true
+        hotremove_cpu: true
+        hotadd_memory: false
+        version: 12 # Hardware version of virtual machine
+        boot_firmware: "efi"
       networks:
         - name: "{{network_name}}"
           ip: "{{network_ip}}"
