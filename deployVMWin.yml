@@ -17,6 +17,13 @@
       cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
       template: "{{vm_template}}"
+      disk:
+        - size_gb: "{{disk_size_gb}}"
+          type: eagerzeroedthick
+            #state: present
+            #scsi_controller: 0
+            #unit_number: 0
+          datastore: "{{vcenter_datastore}}"
       hardware:
         memory_mb: "{{vm_memory}}"
         num_cpus: "{{vm_cpu}}"
