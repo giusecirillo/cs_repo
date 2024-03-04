@@ -8,15 +8,15 @@
   tasks:
   - name: Clone a virtual machine from Windows template and customize
     community.vmware.vmware_guest:
-      hostname: "{{vcenter_hostname}}"
-      username: "{{vcenter_username}}"
-      password: "{{vcenter_password}}"
+      #hostname: "{{vcenter_hostname}}"
+      #username: "{{vcenter_username}}"
+      #password: "{{vcenter_password}}"
       datacenter: "{{vcenter_name}}"
       validate_certs: no
       folder: "{{vcenter_folder}}"
-      cluster: Valgioie
+      cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
-      template: TEMPLATE_W2022STD_New
+      template: "{{vm_template}}"
       networks:
         - name: "{{network_name}}"
           ip: "{{network_ip}}"
