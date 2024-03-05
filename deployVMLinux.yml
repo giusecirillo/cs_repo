@@ -74,7 +74,7 @@
   #- name: Refresh inventory to ensure new instances exist in inventory
   #  meta: refresh_inventory
 
-  - name: Pause for 2 minutes to build app cache
+  - name: Pause for 1 minutes to build app cache
     ansible.builtin.pause:
       minutes: 1
   - name: Resize FS
