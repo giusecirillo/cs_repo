@@ -80,4 +80,4 @@
       minutes: 1
   - name: PRINT NAME
     debug: 
-      msg: "{{ hostname }}"
+      msg: "{{ hw_name }}"
