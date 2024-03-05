@@ -80,4 +80,4 @@
       minutes: 1
   - name: PRINT NAME
     debug: 
-      msg: "{{hw_name}}.{{hw_product_uuid}}"
+      msg: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
