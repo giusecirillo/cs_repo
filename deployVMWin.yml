@@ -52,3 +52,20 @@
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
           type: "{{ip_mode}}"
+        register: deploy
+  #- name: Add host to group
+  #  ansible.builtin.add_host:
+  #    groups:
+  #      - LINUX
+  #      - DEBIAN-UBUNTU
+  #    hostname: '{{ vm_hostname }}'
+  #    ansible_ssh_host: '{{ network_ip }}'
+  #- name: Refresh inventory to ensure new instances exist in inventory
+  #  meta: refresh_inventory
+
+  - name: Pause for 1 minutes to reboot
+    ansible.builtin.pause:
+      minutes: 1
+  - name: PRINT NAME
+    debug: 
+      var: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
