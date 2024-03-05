@@ -17,23 +17,23 @@
     - name: LINUX (YUM)
       dnf: list=upgrades
       register: yumoutput
-      when: ansible_pkg_mgr == 'dnf'
+      when: "{{config.guestId}}" == 'rhel9_64Guest' or "{{config.guestId}}" == 'centos64Guest' or "{{config.guestId}}" == 'centos7_64Guest' or "{{config.guestId}}" == 'centos8_64Guest' and "{{powerState}}" == 'poweredOn'
     - debug:
         msg: "{{yumoutput.msg}}"
-      when: ansible_pkg_mgr == 'dnf'
+      when: "{{config.guestId}}" == 'rhel9_64Guest' or "{{config.guestId}}" == 'centos64Guest' or "{{config.guestId}}" == 'centos7_64Guest' or "{{config.guestId}}" == 'centos8_64Guest' and "{{powerState}}" == 'poweredOn'
 
 # Linux APT
     - name: LINUX (APT-UPDATE-CACHE)
       ansible.builtin.apt:
         update-cache: true
-      when: ansible_pkg_mgr == 'apt'
+      when: "{{config.guestId}}" == 'ubuntu64Guest' or "{{config.guestId}}" == 'debian11_64Guest' or "{{config.guestId}}" == 'debian8_64Guest' and "{{powerState}}" == 'poweredOn'
     - name: LINUX (APT-LIST)
       ansible.builtin.command: apt list --upgradable
       register: apt_simulate
-      when: ansible_pkg_mgr == 'apt'
+      when: "{{config.guestId}}" == 'ubuntu64Guest' or "{{config.guestId}}" == 'debian11_64Guest' or "{{config.guestId}}" == 'debian8_64Guest' and "{{powerState}}" == 'poweredOn'
     - debug:
         var: apt_simulate.msg
-      when: ansible_pkg_mgr == 'apt'
+      when: "{{config.guestId}}" == 'ubuntu64Guest' or "{{config.guestId}}" == 'debian11_64Guest' or "{{config.guestId}}" == 'debian8_64Guest' and "{{powerState}}" == 'poweredOn'
 
 # Windows
     - name: WINDOWS
@@ -44,7 +44,7 @@
           - Updates
         state: searched
       register: ansible_wu
-      when: ansible_pkg_mgr == 'win'
+      when: "{{config.guestId}}" == 'windows9Server64Guest' or "{{config.guestId}}" == 'windows2019srv_64Guest' or "{{config.guestId}}" == '	windows2019srvNext_64Guest' or "{{config.guestId}}" == 'windows9_64Guest' and "{{powerState}}" == 'poweredOn'
     #- name: Create Dictionary from var ansible_wu
     #  debug: msg={{ ("{{ansible_wu}}" |  from_json) }}
     #  set_fact:
@@ -62,4 +62,4 @@
            {% for k in ansible_wu.updates %}
            {{ ansible_wu.updates[k].title }}
            {% endfor %}
-      when: ansible_pkg_mgr == 'win'
+      when: "{{config.guestId}}" == 'windows9Server64Guest' or "{{config.guestId}}" == 'windows2019srv_64Guest' or "{{config.guestId}}" == '	windows2019srvNext_64Guest' or "{{config.guestId}}" == 'windows9_64Guest' and "{{powerState}}" == 'poweredOn'
