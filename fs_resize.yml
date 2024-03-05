@@ -2,9 +2,7 @@
   include_vars:
     file: deployVMLinux.yml
     name: deploy
-- name: PRINT NAME
-    debug: 
-      msg: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"  
+  register: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"  
   hosts: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
   gather_facts: no
   remote_user: ansible
