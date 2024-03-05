@@ -64,6 +64,13 @@
       wait_for_customization: "false"
       wait_for_ip_address: "false"
     register: deploy
+  - name: Add host to group 'just_created' with variable foo=42
+  ansible.builtin.add_host:
+    groups:
+    - LINUX
+    - DEBIAN-UBUNTU
+    hostname: '{{ vm_hostname }}'
+    ansible_ssh_host: '{{ network_ip }}'
   - name: Pause for 2 minutes to build app cache
     ansible.builtin.pause:
       minutes: 2
