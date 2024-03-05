@@ -1,7 +1,7 @@
 - name: Playbook for Resize FS
-  shell: cat "{{msg}}"
-  
-  hosts: "{{vm_hostname*}}"
+  shell: cat "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
+  register: host
+  hosts: "{{host}}"
   gather_facts: no
   remote_user: ansible
   #become_method: sudo
