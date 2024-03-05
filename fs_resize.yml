@@ -1,5 +1,5 @@
 - name: Playbook for Resize FS
-  hosts: "{{vm_hostname}}"
+  hosts: "{{hw_name}}"."{{hw_product_uuid}}"
   gather_facts: no
   remote_user: ansible
   #become_method: sudo
