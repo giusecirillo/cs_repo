@@ -16,7 +16,7 @@
       folder: "{{vcenter_folder}}"
       cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
-      #state: poweredon
+      state: poweredon
       template: "{{vm_template}}"
       disk:
         - size_gb: "{{disk_size_gb}}"
@@ -69,10 +69,6 @@
   #    ansible_ssh_host: '{{ network_ip }}'
   #- name: Refresh inventory to ensure new instances exist in inventory
   #  meta: refresh_inventory
-  - name: Turn the power of the VM on
-    vmware.vmware_rest.vcenter_vm_power:
-      state: start
-      vm: "{{vm_hostname}}_*"
   - name: Pause for 1 minutes to reboot
     ansible.builtin.pause:
       minutes: 1
