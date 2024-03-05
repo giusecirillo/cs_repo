@@ -4,7 +4,7 @@
 # ########################################################################
 ########################################################################
 - name: PlayBook for Install VM on Datacenter
-  hosts: all
+  hosts: "{{vm_hostname}}"
   gather_facts: no
   tasks:
 # Linux YUM
@@ -78,7 +78,6 @@
   - name: Pause for 2 minutes to build app cache
     ansible.builtin.pause:
       minutes: 1
-  - name: Resize FS
-    ansible.builtin.command:
-      cmd: /bin/sh /home/ansible/bin/resize_fs.sh
-    register: fs_resize
+  - name: PRINT NAME
+    debug: 
+      msg: "{{ hostname }}"
