@@ -1,4 +1,8 @@
-- name: Clone a virtual machine from Linux template and customize
+- name: PlayBook for Install VM on Datacenter
+  hosts: all
+  gather_facts: no
+  tasks:
+  - name: Clone a virtual machine from Linux template and customize
     community.vmware.vmware_guest:
       #hostname: "{{vcenter_hostname}}"
       #username: "{{vcenter_username}}"
