@@ -4,7 +4,7 @@
 # ########################################################################
 ########################################################################
 - name: PlayBook for Install updates on ALL HOSTS
-  hosts: CS-WTES01-T-SRV_4227fe7d-1db6-6358-33fe-b7c809ff95a0 #all
+  hosts: all
   gather_facts: no
   remote_user: ansible
   #become_method: sudo
