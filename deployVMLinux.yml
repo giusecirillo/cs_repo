@@ -80,4 +80,4 @@
       minutes: 1
   - name: PRINT NAME
     debug: 
-      msg: "{{ hw_name }}"
+      msg: "{{hw_name}}"."{{hw_product_uuid}}"
