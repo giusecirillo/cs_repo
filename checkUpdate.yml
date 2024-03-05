@@ -17,23 +17,23 @@
     - name: LINUX (YUM)
       dnf: list=upgrades
       register: yumoutput
-      when: "{{config.guestId}}" == 'rhel9_64Guest' or "{{config.guestId}}" == 'centos64Guest' or "{{config.guestId}}" == 'centos7_64Guest' or "{{config.guestId}}" == 'centos8_64Guest' and "{{powerState}}" == 'poweredOn'
+      when: config.guestId == 'rhel9_64Guest' or config.guestId == 'centos64Guest' or config.guestId == 'centos7_64Guest' or config.guestId == 'centos8_64Guest' and "powerState" == 'poweredOn'
     - debug:
         msg: "{{yumoutput.msg}}"
-      when: "{{config.guestId}}" == 'rhel9_64Guest' or "{{config.guestId}}" == 'centos64Guest' or "{{config.guestId}}" == 'centos7_64Guest' or "{{config.guestId}}" == 'centos8_64Guest' and "{{powerState}}" == 'poweredOn'
+      when: config.guestId == 'rhel9_64Guest' or config.guestId == 'centos64Guest' or config.guestId == 'centos7_64Guest' or config.guestId == 'centos8_64Guest' and "powerState" == 'poweredOn'
 
 # Linux APT
     - name: LINUX (APT-UPDATE-CACHE)
       ansible.builtin.apt:
         update-cache: true
-      when: "{{config.guestId}}" == 'ubuntu64Guest' or "{{config.guestId}}" == 'debian11_64Guest' or "{{config.guestId}}" == 'debian8_64Guest' and "{{powerState}}" == 'poweredOn'
+      when: config.guestId == 'ubuntu64Guest' or config.guestId == 'debian11_64Guest' or config.guestId == 'debian8_64Guest' and powerState == 'poweredOn'
     - name: LINUX (APT-LIST)
       ansible.builtin.command: apt list --upgradable
       register: apt_simulate
-      when: "{{config.guestId}}" == 'ubuntu64Guest' or "{{config.guestId}}" == 'debian11_64Guest' or "{{config.guestId}}" == 'debian8_64Guest' and "{{powerState}}" == 'poweredOn'
+      when: config.guestId == 'ubuntu64Guest' or config.guestId == 'debian11_64Guest' or config.guestId == 'debian8_64Guest' and powerState == 'poweredOn'
     - debug:
         var: apt_simulate.msg
-      when: "{{config.guestId}}" == 'ubuntu64Guest' or "{{config.guestId}}" == 'debian11_64Guest' or "{{config.guestId}}" == 'debian8_64Guest' and "{{powerState}}" == 'poweredOn'
+      when: config.guestId == 'ubuntu64Guest' or config.guestId == 'debian11_64Guest' or config.guestId == 'debian8_64Guest' and powerState == 'poweredOn'
 
 # Windows
     - name: WINDOWS
