@@ -52,11 +52,6 @@
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
           type: "{{ip_mode}}"
-      customization:
-        hostname: "{{ vm_hostname }}"
-        autologon: true
-      wait_for_customization: yes
-      wait_for_ip_address: True
     register: deploy
     delegate_to: localhost
   #- name: Add host to group
