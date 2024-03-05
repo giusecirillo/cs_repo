@@ -1,4 +1,6 @@
 - name: Playbook for Resize FS
+  shell: cat "{{msg}}"
+  
   hosts: "{{vm_hostname*}}"
   gather_facts: no
   remote_user: ansible
