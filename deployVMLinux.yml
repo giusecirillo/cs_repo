@@ -80,4 +80,4 @@
       minutes: 1
   - name: PRINT NAME
     debug: 
-      var: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
+      var: "{{deploy.instance.hw_name}}"
