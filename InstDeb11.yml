@@ -1,5 +1,5 @@
 - name: PlayBook for Install VM on Datacenter
-  hosts: all
+  hosts: "{{vm_hostname}}"
   gather_facts: no
   tasks:
   - name: Clone a virtual machine from Linux template and customize
