@@ -52,3 +52,9 @@
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
           type: "{{ip_mode}}"
+- name: Add host to group 'just_created' with variable foo=42
+  ansible.builtin.add_host:
+    groups:
+    - WINDOWS
+    hostname: '{{ vm_hostname }}'
+    ansible_ssh_host: '{{ network_ip }}'
