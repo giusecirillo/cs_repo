@@ -1,8 +1,8 @@
 - name: Playbook for Resize FS
-  ansible.builtin.import_playbook: deployVMLinux.yml
-  cmd: cat "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
-  register: host
-  hosts: "{{host}}"
+  include_vars:
+    file: deployVMLinux.yml
+    name: deploy
+  hosts: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
   gather_facts: no
   remote_user: ansible
   #become_method: sudo
