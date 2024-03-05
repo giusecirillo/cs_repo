@@ -44,7 +44,7 @@
           - Updates
         state: searched
       register: ansible_wu
-      when: "{{config.guestId}}" == 'windows9Server64Guest' or "{{config.guestId}}" == 'windows2019srv_64Guest' or "{{config.guestId}}" == '	windows2019srvNext_64Guest' or "{{config.guestId}}" == 'windows9_64Guest' and "{{powerState}}" == 'poweredOn'
+      when: config.guestId == 'windows9Server64Guest' or config.guestId == 'windows2019srv_64Guest' or config.guestId == '	windows2019srvNext_64Guest' or config.guestId == 'windows9_64Guest' and powerState == 'poweredOn'
     #- name: Create Dictionary from var ansible_wu
     #  debug: msg={{ ("{{ansible_wu}}" |  from_json) }}
     #  set_fact:
@@ -62,4 +62,4 @@
            {% for k in ansible_wu.updates %}
            {{ ansible_wu.updates[k].title }}
            {% endfor %}
-      when: "{{config.guestId}}" == 'windows9Server64Guest' or "{{config.guestId}}" == 'windows2019srv_64Guest' or "{{config.guestId}}" == '	windows2019srvNext_64Guest' or "{{config.guestId}}" == 'windows9_64Guest' and "{{powerState}}" == 'poweredOn'
+      when: config.guestId == 'windows9Server64Guest' or config.guestId == 'windows2019srv_64Guest' or config.guestId == '	windows2019srvNext_64Guest' or config.guestId == 'windows9_64Guest' and powerState == 'poweredOn'
