@@ -53,11 +53,9 @@
             - "{{dns_servers[1]}}"
           type: "{{ip_mode}}"
       customization:
-        hostname: "{{ vm_hostname }}"
-        ip: "{{network_ip}}"
-        netmask: 255.255.255.0
-        gateway: "{{network_gw}}"
         domain: "{{network_domain}}"
+        hostname: "{{vm_hostname}}"
+        timezone: "Romance Standard Time"
         dns_servers:
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
