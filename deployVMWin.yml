@@ -55,7 +55,7 @@
       customization:
         domain: "{{network_domain}}"
         hostname: "{{vm_hostname}}"
-        timezone: "Romance Standard Time"
+        timezone: 110
         dns_servers:
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
