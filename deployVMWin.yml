@@ -57,7 +57,6 @@
         dns_servers:
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
-            - "{{dns_servers[2]}}"
       wait_for_customization: false
       wait_for_ip_address: false
     register: deploy
