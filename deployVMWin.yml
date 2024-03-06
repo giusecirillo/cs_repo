@@ -28,7 +28,7 @@
       hardware:
         memory_mb: "{{vm_memory}}"
         num_cpus: "{{vm_cpu}}"
-        scsi: paravirtual
+        scsi: lsilogicsas
         #memory_reservation_lock: true
         #mem_limit: 8096
         #mem_reservation: 4096
