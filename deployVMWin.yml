@@ -54,6 +54,10 @@
           type: "{{ip_mode}}"
       customization:
         hostname: "{{ vm_hostname }}"
+        ip: "{{network_ip}}"
+        netmask: 255.255.255.0
+        gateway: "{{network_gw}}"
+        domain: "{{network_domain}}"
         dns_servers:
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
@@ -70,9 +74,9 @@
   #    ansible_ssh_host: '{{ network_ip }}'
   #- name: Refresh inventory to ensure new instances exist in inventory
   #  meta: refresh_inventory
-  - name: Pause for 1 minutes to reboot
+  - name: Pause for 2 minutes to reboot
     ansible.builtin.pause:
-      minutes: 1
+      minutes: 2
   - name: PRINT NAME
     debug: 
       var: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
