@@ -52,6 +52,8 @@
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
           type: "{{ip_mode}}"
+      wait_for_customization: no
+      wait_for_ip_address: no
     register: deploy
     delegate_to: localhost
   #- name: Add host to group
