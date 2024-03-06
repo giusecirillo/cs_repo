@@ -75,9 +75,9 @@
   #- name: Refresh inventory to ensure new instances exist in inventory
   #  meta: refresh_inventory
 
-  - name: Pause for 1 minutes to reboot
+  - name: Pause for 2 minutes to reboot
     ansible.builtin.pause:
-      minutes: 1
+      minutes: 2
   - name: PRINT NAME
     debug: 
       var: "{{deploy.instance.hw_name}}"
