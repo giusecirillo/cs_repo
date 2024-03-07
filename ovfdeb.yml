@@ -1,0 +1,26 @@
+- name: Deploy Debian11 OVA
+  vmware_deploy_ovf:
+    hostname: "{{ vcenter }}"
+    username: "{{ vcuser }}'
+    password: "{{vcpass}}"
+    validate_certs: False
+    allow_duplicates: False
+    datacenter: "{{ datacenter }}"
+    cluster: "{{cluster}}"
+    datastore: "datastore1"
+    deployment_option: SMALL_VM
+    disk_provisioning: thin
+    inject_ovf_env: True
+    name: "{{vm_name}}"
+    networks:
+      "Network 0": "{{ portgroup }}"
+    ovf: "/vmfs/volumes/datastore1/ISOs/centos7-1908.ova"
+    properties:
+      dns0: "{{dnsSrv}}"
+      ntp0: "{{ntpSrv}}"
+      ip0: "{{ipAddr}}"
+      gateway0: "{{ipGW}}"
+      subnet0: "{{ipSM}}"
+      hostname: "{{vm_name}}"
+      domain: "{{ domain }}"
+      dnssearch: "{{ domain }}"
