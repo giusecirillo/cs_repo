@@ -36,7 +36,7 @@
           dns_servers:
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
-    ovf: "/vmfs/volumes/datastore1/ISOs/centos7-1908.ova"
+    ova_url: 'http://10.10.160.200/deb11/TEMPLATE_DEB11.ovf'
     customization:
         hostname: "{{ vm_hostname }}"
         dns_servers:
