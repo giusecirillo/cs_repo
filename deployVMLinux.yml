@@ -51,6 +51,7 @@
           ip: "{{network_ip}}"
           netmask: "{{network_netmask}}"
           gateway: "{{network_gw}}"
+          domain: "{{network_domain}}"
           type: "{{ip_mode}}"
           start_connected: True
           dns_servers:
