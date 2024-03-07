@@ -26,14 +26,14 @@
     - name: LINUX (APT-UPDATE-CACHE)
       ansible.builtin.apt:
         update-cache: true
-      when: config.guestId == 'ubuntu64Guest' or config.guestId == 'debian11_64Guest' or config.guestId == 'debian8_64Guest' and summary.runtime.powerState == 'poweredOn'
+      when: config.guestId == 'ubuntu64Guest' or config.guestId == 'debian11_64Guest' or config.guestId == 'otherLinux64Guest' and summary.runtime.powerState == 'poweredOn'
     - name: LINUX (APT-LIST)
       ansible.builtin.command: apt list --upgradable
       register: apt_simulate
-      when: config.guestId == 'ubuntu64Guest' or config.guestId == 'debian11_64Guest' or config.guestId == 'debian8_64Guest' and summary.runtime.powerState == 'poweredOn'
+      when: config.guestId == 'ubuntu64Guest' or config.guestId == 'debian11_64Guest' or config.guestId == 'otherLinux64Guest' and summary.runtime.powerState == 'poweredOn'
     - debug:
         var: apt_simulate.msg
-      when: config.guestId == 'ubuntu64Guest' or config.guestId == 'debian11_64Guest' or config.guestId == 'debian8_64Guest' and summary.runtime.powerState == 'poweredOn'
+      when: config.guestId == 'ubuntu64Guest' or config.guestId == 'debian11_64Guest' or config.guestId == 'otherLinux64Guest' and summary.runtime.powerState == 'poweredOn'
 
 # Windows
     - name: WINDOWS
