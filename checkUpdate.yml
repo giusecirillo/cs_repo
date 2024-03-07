@@ -38,6 +38,7 @@
 # Windows
     - name: WINDOWS
       become_method: runas
+      shell_type: cmd
       ansible.windows.win_updates:
         category_names: 
           - SecurityUpdates
