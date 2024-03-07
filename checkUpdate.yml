@@ -37,6 +37,8 @@
 
 # Windows
     - name: WINDOWS
+      become_method: runas
+      remote_tmp: C:\Users\ansible\Tmp
       ansible.windows.win_updates:
         category_names: 
           - SecurityUpdates
