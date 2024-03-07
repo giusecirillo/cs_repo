@@ -1,13 +1,10 @@
 - name: Deploy Debian11 OVA
   vmware_deploy_ovf:
-    hostname: "{{ vcenter }}"
-    username: "{{ vcuser }}'
-    password: "{{vcpass}}"
     validate_certs: False
     allow_duplicates: False
-    datacenter: "{{ datacenter }}"
-    cluster: "{{cluster}}"
-    datastore: "datastore1"
+    datacenter: "{{ vcenter_name }}"
+    cluster: "{{vcenter_cluster}}"
+    datastore: "{{vcenter_datastore}}"
     deployment_option: SMALL_VM
     disk_provisioning: thin
     inject_ovf_env: True
