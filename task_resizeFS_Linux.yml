@@ -1,5 +1,5 @@
 - name: PlayBook for Resize FS Linux
-  hosts: CS-AAWX04-T-SRV_*
+  hosts: "{{vm_hostname}}"
   gather_facts: no
   remote_user: ansible
   become: True
