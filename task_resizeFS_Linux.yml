@@ -5,8 +5,8 @@
   become: True
   tasks:
     - community.vmware.vmware_guest_disk:
-      datacenter: "{{vcenter_name}}"
-      validate_certs: no
+        datacenter: "{{vcenter_name}}"
+        validate_certs: no
         disk:
           - state: present
             size_gb: 100
