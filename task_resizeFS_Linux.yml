@@ -1,5 +1,5 @@
 - name: PlayBook for Resize FS Linux
-  hosts: "{{vm_hostname}}_*"
+  hosts: CS-AAWX04-T-SRV_*"
   gather_facts: no
   remote_user: ansible
   become: True
@@ -8,3 +8,8 @@
       disk:
         - state: present
           size_gb: 100
+          type: eagerzeroedthick
+            #state: present
+            #scsi_controller: 0
+            #unit_number: 0
+          datastore: "{{vcenter_datastore}}"
