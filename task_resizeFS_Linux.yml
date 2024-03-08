@@ -2,7 +2,7 @@
   hosts: "{{vm_hostname}}_*"
   gather_facts: no
   remote_user: ansible
-  become: True
+  become: False
   tasks:
     - community.vmware.vmware_guest_disk:
         datacenter: "{{vcenter_name}}"
