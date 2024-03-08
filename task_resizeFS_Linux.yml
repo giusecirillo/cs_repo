@@ -7,6 +7,7 @@
     - community.vmware.vmware_guest_disk:
         datacenter: "{{vcenter_name}}"
         validate_certs: no
+        name: "{{vm_hostname}}"
         disk:
           - state: present
             size_gb: 100
