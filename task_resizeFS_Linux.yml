@@ -12,4 +12,4 @@
             #state: present
             #scsi_controller: 0
             #unit_number: 0
-          datastore: "{{vcenter_datastore}}"
+          datastore: P2K1_50_5
