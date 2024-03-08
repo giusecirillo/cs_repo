@@ -10,6 +10,7 @@
         name: "{{vm_hostname}}"
         disk:
           - state: present
+            unit_number: 1
             size_gb: 100
             type: eagerzeroedthick
             #state: present
