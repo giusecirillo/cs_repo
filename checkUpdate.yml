@@ -4,7 +4,7 @@
 # ########################################################################
 ########################################################################
 - name: PlayBook for Install updates on ALL HOSTS
-  hosts: all
+  hosts: CS-AFMA01-T-SRV_422797eb-dc6f-bc02-46a3-1b9efa7ad2e5
   gather_facts: no
   remote_user: ansible
   #become_method: sudo
