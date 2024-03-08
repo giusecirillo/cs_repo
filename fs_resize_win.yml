@@ -6,9 +6,9 @@
   become: True
   tasks:
     - name: Wait 300 seconds, but only start checking after 15 seconds
-        wait_for_connection:
-          delay: 15
-          timeout: 300
+      wait_for_connection:
+        delay: 15
+        timeout: 300
  
     - name: Connect to windows host and expand the drive
       ansible.windows.win_powershell:
