@@ -5,11 +5,11 @@
   become: True
   tasks:
     - community.vmware.vmware_guest_disk:
-      disk:
-        - state: present
-          size_gb: 100
-          type: eagerzeroedthick
+        disk:
+          - state: present
+            size_gb: 100
+            type: eagerzeroedthick
             #state: present
             #scsi_controller: 0
             #unit_number: 0
-          datastore: P2K1_50_5
+            datastore: P2K1_50_5
