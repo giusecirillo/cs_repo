@@ -1,0 +1,10 @@
+- name: PlayBook for Resize FS Linux
+  hosts: "{{vm_hostname}}_*"
+  gather_facts: no
+  remote_user: ansible
+  become: True
+  tasks:
+    - community.vmware.vmware_guest_disk:
+      disk:
+        - state: present
+          size_gb: 100
