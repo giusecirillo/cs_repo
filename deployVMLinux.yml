@@ -53,6 +53,7 @@
           gateway: "{{network_gw}}"
           domain: "{{network_domain}}"
           type: "{{ip_mode}}"
+          connected: True
           start_connected: True
           dns_servers:
             - "{{dns_servers[0]}}"
