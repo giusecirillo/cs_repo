@@ -10,6 +10,10 @@
   #become_method: sudo
   become: True
   tasks:
+    - name: Sleep for 30 seconds and continue with play
+      ansible.builtin.wait_for:
+        timeout: 30
+      delegate_to: localhost
     - name: Resize FS 
       ansible.builtin.command:
         cmd: /bin/sh /home/ansible/bin/resize_fs.sh
