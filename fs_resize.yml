@@ -6,7 +6,7 @@
 - name: PlayBook for Resize FS DEB
   hosts: "{{vm_hostname}}_*"
   gather_facts: no
-  remote_user: ansible
+  become_user: ansible
   #become_method: sudo
   become: True
   tasks:
