@@ -49,6 +49,7 @@
       networks:
         - name: "{{network_name}}"
           ip: "{{network_ip}}"
+          connected: True
           netmask: "{{network_netmask}}"
           gateway: "{{network_gw}}"
           domain: "{{network_domain}}"
@@ -58,10 +59,9 @@
             - "{{dns_servers[0]}}"
       customization:
         hostname: "{{ vm_hostname }}"
-        ip: "{{network_ip}}"
-        connected: True
+        #ip: "{{network_ip}}"
         dns_servers:
-            - "{{dns_servers[0]}}"
+          - "{{dns_servers[0]}}"
       wait_for_customization: false
       wait_for_ip_address: false
     register: deploy
