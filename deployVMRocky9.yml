@@ -1,4 +1,5 @@
 - name: Create a VM from a template
+  hosts: localhost
   vmware_guest:
     validate_certs: no
     folder: "{{ vcenter_datacenter }}/vm"
