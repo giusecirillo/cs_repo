@@ -61,8 +61,8 @@
         #timezone: 110
         dns_servers:
             - "{{dns_servers[0]}}"
-      wait_for_customization: false
-      wait_for_ip_address: false
+      wait_for_customization: true
+      wait_for_ip_address: true
     register: deploy
   #- name: Add host to group
   #  ansible.builtin.add_host:
