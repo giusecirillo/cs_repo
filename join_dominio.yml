@@ -1,0 +1,119 @@
+#######################################################################
+#######################################################################
+# PlayBook create by Cirillo Giuseppe
+# #####################################################################
+#######################################################################
+---
+- name: PlayBook Join to domain criticalservice.test
+  gather_facts: yes
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /criticalservice/bin
+    state: directory
+    
+- name: Install packages
+  ansible.builtin.apt:
+    pkg: [realmd, sssd, sssd-tools, libnss-sss, libpam-sss, adcli, samba-common-bin, oddjob, oddjob-mkhomedir, packagekit, net-tools, krb5-user]
+  when: ansible_distribution == "Ubuntu" #and (ansible_distribution_major_version == "22" or ansible_distribution_major_version == "20")
+  tags:
+    - install_pkgs
+
+- name: Install packages
+  ansible.builtin.yum:
+    name: [sssd, realmd, oddjob, oddjob-mkhomedir, adcli, samba-common, samba-common-tools, krb5-workstation, openldap-clients, policycoreutils-python]
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "7"
+  tags:
+    - install_pkgs
+
+- name: Install packages
+  ansible.builtin.dnf:
+    name: [sssd, realmd, oddjob, oddjob-mkhomedir, adcli, samba-common, samba-common-tools, krb5-workstation]
+  when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8"
+  tags:
+    - install_pkgs
+  
+  - name: Prepare realmd.conf
+    ansible.builtin.copy:
+    dest: "/etc/realmd.conf"
+    content: |
+      [users] 
+      default-home = /home/%U
+      default-shell = /bin/bash
+      
+      [criticalservice.test]
+      automatic-id-mapping = no
+      fully-qualified-names = no
+      computer-ou = ou=Linux_SRV,ou=02_Servers,ou=01-CRITICALSERVICE,,dc=criticalservice,dc=test
+      user-principal = yes
+    notify: restart realmd
+
+  - name: Join domain 
+    ansible.builtin.command:
+      cmd: "{{ item }}"
+    with_items:
+      - realm leave
+      - realm discover -v cs-dcln01-t-srv.criticalservice.test
+    ignore_errors: true
+
+  - name: Join domain realm join
+    ansible.builtin.shell: echo "Br1sp0tt0C3r3al1x!" | realm join -v --user=test.ansij cs-dcln01-t-srv.criticalservice.test
+    notify: restart sssd
+
+  - name: Prepare sssd.conf
+    ansible.builtin.copy:
+      dest: "/etc/sssd/sssd.conf"
+      content: |
+        [sssd]
+        debug_level = 0
+        config_file_version = 2
+        services = nss, pam, ssh, sudo
+        domains = criticalservice.test
+        default_domain_suffix = criticalservice.test
+        [ssh]
+        debug_level = 0
+  
+        [domain/criticalservice.test]
+        default_shell = /bin/bash
+        ad_server = cs-dc01-p-srv.criticalservice.local
+        #ad_server_backup = dc2.ad.aruba.it
+        krb5_store_password_if_offline = True
+        cache_credentials = True
+        krb5_realm = CRITICALSERVICE.TEST
+        realmd_tags = manages-system joined-with-adcli
+        id_provider = ad
+        fallback_homedir = /home/%u
+        ad_domain = criticalservice.test
+        use_fully_qualified_names = False
+        ldap_id_mapping = True
+        ad_gpo_access_control = permissive
+        simple_allow_groups = Group_Linux_Access@criticalservice.local
+        access_provider = simple
+        #sudo_provider = ldap
+        ldap_uri = ldap://cs-dc01-p-srv.criticalservice.local
+        ldap_sudo_search_base = dc= criticalservice,dc=local
+        ldap_sudo_full_refresh_interval=86400
+        ldap_sudo_smart_refresh_interval=3600
+        ad_gpo_ignore_unreadable = True
+        # any users can login via ssh but GPO is not applied
+        ad_gpo_access_control = permissive
+    
+    notify: restart sssd
+  
+  
+  
+  
+  hosts: "{{vm_hostname}}_*"
+  remote_user: ansible
+  gather_facts: no
+  become_user: ansible
+  #become_method: sudo
+  become: True
+  tasks:
+    - name: Sleep for 30 seconds and continue with play
+      ansible.builtin.wait_for:
+        timeout: 30
+      delegate_to: localhost
+    - name: Resize FS 
+      ansible.builtin.command:
+        cmd: /bin/sh /home/ansible/bin/resize_fs.sh
+      register: fs_resize
