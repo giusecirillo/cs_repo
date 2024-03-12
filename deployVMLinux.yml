@@ -5,6 +5,7 @@
 ########################################################################
 - name: PlayBook for Install VM on Datacenter
   hosts: localhost
+  gather_facts: no
   tasks:
 # Linux YUM
   - name: Clone a virtual machine from Linux template and customize
@@ -52,14 +53,13 @@
           gateway: "{{network_gw}}"
           domain: "{{network_domain}}"
           type: "{{ip_mode}}"
+          start_connected: True
           dns_servers:
             - "{{dns_servers[0]}}"
       customization:
         hostname: "{{ vm_hostname }}"
-        domain: "{{network_domain}}"
-        timezone: 110
         dns_servers:
-          - "{{dns_servers[0]}}"
+            - "{{dns_servers[0]}}"
       wait_for_customization: false
       wait_for_ip_address: false
     register: deploy
@@ -73,9 +73,9 @@
   #- name: Refresh inventory to ensure new instances exist in inventory
   #  meta: refresh_inventory
 
-  #- name: Pause for 2 minutes to reboot
-  #  ansible.builtin.pause:
-  #    minutes: 2
-  #- name: PRINT NAME
-  #  debug: 
-  #    var: "{{deploy.instance.hw_name}}"
+  - name: Pause for 2 minutes to reboot
+    ansible.builtin.pause:
+      minutes: 2
+  - name: PRINT NAME
+    debug:
+      var: "{{deploy.instance.hw_name}}"
