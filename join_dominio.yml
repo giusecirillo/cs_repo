@@ -64,18 +64,13 @@
       dest: "/etc/sssd/sssd.conf"
       content: |
         [sssd]
-        debug_level = 0
-        config_file_version = 2
-        services = nss, pam, ssh, sudo
         domains = criticalservice.test
+        config_file_version = 2
+        services = nss, pam, sudo
         default_domain_suffix = criticalservice.test
-        [ssh]
-        debug_level = 0
-  
         [domain/criticalservice.test]
-        default_shell = /bin/bash
-        ad_server = cs-dc01-p-srv.criticalservice.local
-        #ad_server_backup = dc2.ad.aruba.it
+        default_shel= /bin/bash
+        ad_server = cs-dcln01-t-srv.criticalservice.test
         krb5_store_password_if_offline = True
         cache_credentials = True
         krb5_realm = CRITICALSERVICE.TEST
@@ -83,19 +78,16 @@
         id_provider = ad
         fallback_homedir = /home/%u
         ad_domain = criticalservice.test
-        use_fully_qualified_names = False
+        use_fully_qualified_names = True
         ldap_id_mapping = True
         ad_gpo_access_control = permissive
-        simple_allow_groups = Group_Linux_Access@criticalservice.local
+        simple_allow_groups = Group_Linux_Access@criticalservice.test
         access_provider = simple
         #sudo_provider = ldap
-        ldap_uri = ldap://cs-dc01-p-srv.criticalservice.local
-        ldap_sudo_search_base = dc= criticalservice,dc=local
+        ldap_uri = ldap://cs-dcln01-t-srv.criticalservice.test
+        ldap_sudo_search_base = dc= criticalservice,dc=test
         ldap_sudo_full_refresh_interval=86400
         ldap_sudo_smart_refresh_interval=3600
-        ad_gpo_ignore_unreadable = True
-        # any users can login via ssh but GPO is not applied
-        ad_gpo_access_control = permissive
     
     notify: restart sssd
   
