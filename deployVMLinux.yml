@@ -59,7 +59,7 @@
             - "{{dns_servers[0]}}"
       customization:
         hostname: "{{ vm_hostname }}"
-        #ip: "{{network_ip}}"
+        ip: "{{network_ip}}"
         dns_servers:
           - "{{dns_servers[0]}}"
       wait_for_customization: false
