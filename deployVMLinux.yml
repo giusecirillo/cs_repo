@@ -5,7 +5,6 @@
 ########################################################################
 - name: PlayBook for Install VM on Datacenter
   hosts: localhost
-  gather_facts: no
   tasks:
 # Linux YUM
   - name: Clone a virtual machine from Linux template and customize
