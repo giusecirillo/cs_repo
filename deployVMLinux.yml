@@ -73,10 +73,3 @@
   #    ansible_ssh_host: '{{ network_ip }}'
   #- name: Refresh inventory to ensure new instances exist in inventory
   #  meta: refresh_inventory
-
-  - name: Pause for 2 minutes to reboot
-    ansible.builtin.pause:
-      minutes: 2
-  - name: PRINT NAME
-    debug:
-      var: "{{deploy.instance.hw_name}}"
