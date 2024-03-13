@@ -65,6 +65,7 @@
       wait_for_customization: yes
       wait_for_ip_address: yes
     register: deploy
+    delegate_to: localhost
   #- name: Add host to group
   #  ansible.builtin.add_host:
   #    groups:
