@@ -17,5 +17,5 @@
       delegate_to: localhost
     - name: Resize FS 
       ansible.builtin.command:
-        cmd: /bin/sh /home/ansible/bin/resize_fs.sh
+        cmd: sudo /home/ansible/bin/resize_fs.sh
       register: fs_resize
