@@ -28,7 +28,6 @@
       networks:
         - name: "{{network_name}}"
           device_type: vmxnet3
-          existing_vm: true
           ip: "{{network_ip}}"
           netmask: "{{network_netmask}}"
           gateway: "{{network_gw}}"
