@@ -45,9 +45,10 @@
         #hotremove_cpu: true
         #hotadd_memory: false
         #version: 12 # Hardware version of virtual machine
-        #boot_firmware: "efi"
+        boot_firmware: "efi"
       networks:
         - name: "{{network_name}}"
+          device_type: vmxnet3
           existing_vm: true
           ip: "{{network_ip}}"
           netmask: "{{network_netmask}}"
@@ -58,12 +59,12 @@
           dns_servers:
             - "{{dns_servers[0]}}"
       customization:
-        hostname: "{{ vm_hostname }}"
+        hostname: "{{ vm_hostname|lower }}"
         #timezone: 110
         dns_servers:
             - "{{dns_servers[0]}}"
-      wait_for_customization: yes
-      wait_for_ip_address: yes
+      wait_for_customization: true
+      wait_for_ip_address: false
     register: deploy
     delegate_to: localhost
   #- name: Add host to group
