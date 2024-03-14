@@ -10,7 +10,7 @@
       hostname: "{{vm_hostname}}_*"
       domain_admin_user: test.ansij
       domain_admin_password: Br1sp0tt0C3r3al1x!
-      domain_ou_path: "OU=Windows,OU=Servers,DC=criticalservice,DC=test"
+      domain_ou_path: "OU=Linux_SRV,OU=02_Servers,OU=01-CRITICALSERVICE,DC=criticalservice,DC=test"
       state: domain
     register: domain_state
 
