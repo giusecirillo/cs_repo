@@ -6,6 +6,7 @@
 - name: PlayBook Join to domain criticalservice.test
   hosts: "{{vm_hostname}}_*"
   gather_facts: yes
+  become: true
   tasks:
     - name: Install packages
       ansible.builtin.apt:
