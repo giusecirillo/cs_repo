@@ -13,8 +13,8 @@
       folder: "{{vcenter_folder}}"
       cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
-      state: poweredon
       template: "{{vm_template}}"
+      state: poweredon
       disk:
         - size_gb: "{{disk_size_gb}}"
           type: eagerzeroedthick
