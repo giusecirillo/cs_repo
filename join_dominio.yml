@@ -33,7 +33,7 @@
       lineinfile:
         path: /etc/sudoers
         state: present
-        line: "%domain\\ admins@criticalservice.test ALL=(ALL) NOPASSWD: ALL"
+        line: "%domain\\\ admins@criticalservice.test ALL=(ALL) NOPASSWD: ALL"
     
     - name: Add domain-entry on resolv.conf
       lineinfile:
