@@ -85,15 +85,5 @@
       ldap_sudo_search_base = dc= criticalservice,dc=test
       ldap_sudo_full_refresh_interval=86400
       ldap_sudo_smart_refresh_interval=3600
- 
-  - name: Add domain-entry on resolv.conf
-    lineinfile:
-      path: /etc/pam.d/common-session
-      state: present
-      line: "session optional pam_mkhomedir.so skel=/etc/skel umask=077"
-  - name: Restart rsyslog
-    ansible.builtin.service:
-      name: sssd
-      state: restarted
   
       
