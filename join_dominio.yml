@@ -25,7 +25,7 @@
     - name: Install packages
       ansible.builtin.dnf:
         name: [authselect-compat, sssd, realmd, oddjob, oddjob-mkhomedir, adcli, samba-common, samba-common-tools, krb5-workstation]
-      when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8"
+      when: ansible_distribution == "CentOS" or ansible_distribution == "Rocky"
       tags:
         - install_pkgs
         
