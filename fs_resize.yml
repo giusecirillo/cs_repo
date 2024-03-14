@@ -11,12 +11,15 @@
   #become_method: sudo
   #become: True
   tasks:
-    - name: Sleep for 30 seconds and continue with play
+    - name: Sleep for 10 seconds and continue with play
       ansible.builtin.wait_for:
-        timeout: 30
+        timeout: 10
       delegate_to: localhost
     - name: Resize FS 
       ansible.builtin.command:
         cmd: /bin/sh /home/ansible/bin/resize_fs.sh
       register: fs_resize
-      when: vm_template == "TEMPLATE_DEB11"
+      when: vm_template == "TEMPLATE_DEB11" or when: vm_template == "TEMPLATE_RK9" or vm_template == "TEMPLATE_CENTOS8"
+    - name: Resize FS 
+      win_shell: C:\\criticalservice\\bin\\extend_volume_c.ps1
+      when: vm_template == "TEMPLATE_W2022STD"      
