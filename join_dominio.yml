@@ -7,11 +7,6 @@
   hosts: "{{vm_hostname}}_*"
   gather_facts: yes
   tasks:
-    - name: Create a directory if it does not exist
-      ansible.builtin.file:
-        path: /criticalservice/bin
-        state: directory
-        
     - name: Install packages
       ansible.builtin.apt:
         pkg: [realmd, sssd, sssd-tools, libnss-sss, libpam-sss, adcli, samba-common-bin, oddjob, oddjob-mkhomedir, packagekit, net-tools, krb5-user]
