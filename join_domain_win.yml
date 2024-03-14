@@ -3,6 +3,9 @@
 # Ansible connection should use local credentials if possible.
 # If a reboot is required, the second task will trigger one and wait until the host is available.
 - hosts: "{{vm_hostname}}_*"
+  remote_user: ansible
+  become_method: runas
+  become: True
   gather_facts: false
   tasks:
   - ansible.windows.win_domain_membership:
