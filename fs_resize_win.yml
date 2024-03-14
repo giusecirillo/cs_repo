@@ -16,4 +16,3 @@
       delegate_to: localhost
     - name: Resize FS 
       win_shell: C:\\criticalservice\\bin\\extend_volume_c.ps1
-      delegate_to: localhost
