@@ -14,9 +14,5 @@
       ansible.windows.win_tempfile:
         state: directory
         suffix: build
-    - name: Sleep for 30 seconds and continue with play
-      ansible.builtin.wait_for:
-        timeout: 30
-      delegate_to: localhost
     - name: Resize FS 
       win_shell: C:\\criticalservice\\bin\\extend_volume_c.ps1
