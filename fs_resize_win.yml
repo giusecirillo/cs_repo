@@ -10,6 +10,10 @@
   become_method: runas
   become: True
   tasks:
+    - name: Create temporary build directory
+      ansible.windows.win_tempfile:
+        state: directory
+        suffix: build
     - name: Sleep for 30 seconds and continue with play
       ansible.builtin.wait_for:
         timeout: 30
