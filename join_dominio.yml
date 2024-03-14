@@ -31,23 +31,20 @@
   when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8"
   tags:
     - install_pkgs
-  
-  - name: Prepare realmd.conf
-    ansible.builtin.copy:
-    dest: "/etc/realmd.conf"
-    content: |
-      [users] 
-      default-home = /home/%U
-      default-shell = /bin/bash
-      
-      [criticalservice.test]
-      automatic-id-mapping = no
-      fully-qualified-names = no
-      computer-ou = ou=Linux_SRV,ou=02_Servers,ou=01-CRITICALSERVICE,,dc=criticalservice,dc=test
-      user-principal = yes
-    notify: restart realmd
+    
+- name: Add sudo-entry for linux-groups-admin
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    line: "domain users@criticalservice.test ALL=(ALL) NOPASSWD: ALL"
 
-  - name: Join domain 
+- name: Add domain-entry on resolv.conf
+  lineinfile:
+    path: /etc/resolv.conf
+    state: present
+    line: "domain criticalservice.test"
+  
+- name: Join domain 
     ansible.builtin.command:
       cmd: "{{ item }}"
     with_items:
@@ -56,9 +53,8 @@
     ignore_errors: true
 
   - name: Join domain realm join
-    ansible.builtin.shell: echo "Br1sp0tt0C3r3al1x!" | realm join -v --user=test.ansij cs-dcln01-t-srv.criticalservice.test
-    notify: restart sssd
-
+    ansible.builtin.shell: echo "Br1sp0tt0C3r3al1x!" | realm join -v -U test.ansij --computer-ou=OU=Linux_SRV,OU=02_Servers,OU=01-CRITICALSERVICE,DC=criticalservice,DC=test CRITICALSERVICE.TEST
+      
   - name: Prepare sssd.conf
     ansible.builtin.copy:
       dest: "/etc/sssd/sssd.conf"
@@ -82,9 +78,16 @@
         ldap_id_mapping = True
         ad_gpo_access_control = permissive
         simple_allow_groups = Group_Linux_Access@criticalservice.test
-        access_provider = simple
+        access_provider = ad
         #sudo_provider = ldap
         ldap_uri = ldap://cs-dcln01-t-srv.criticalservice.test
         ldap_sudo_search_base = dc= criticalservice,dc=test
         ldap_sudo_full_refresh_interval=86400
         ldap_sudo_smart_refresh_interval=3600
+  
+  - name: Add domain-entry on resolv.conf
+    lineinfile:
+      path: /etc/pam.d/common-session
+      state: present
+      line: "session optional pam_mkhomedir.so skel=/etc/skel umask=077"
+      
