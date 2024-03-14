@@ -10,5 +10,5 @@
         timeout: 30
       delegate_to: localhost
 
-    - name: Run resize FS ps1
+    - name: Resize FS 
       win_shell: C:\\criticalservice\\bin\\extend_volume_c.ps1
