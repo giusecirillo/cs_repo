@@ -2,15 +2,15 @@
 # and will use the passed credentials to join domain if necessary.
 # Ansible connection should use local credentials if possible.
 # If a reboot is required, the second task will trigger one and wait until the host is available.
-- hosts: winclient
+- hosts: "{{vm_hostname}}_*"
   gather_facts: false
   tasks:
   - ansible.windows.win_domain_membership:
       dns_domain_name: crtiticalservice.test
-      hostname: mydomainclient
-      domain_admin_user: testguy@ansible.vagrant
-      domain_admin_password: password123!
-      domain_ou_path: "OU=Windows,OU=Servers,DC=ansible,DC=vagrant"
+      hostname: "{{vm_hostname}}_*"
+      domain_admin_user: test.ansij
+      domain_admin_password: Br1sp0tt0C3r3al1x!
+      domain_ou_path: "OU=Windows,OU=Servers,DC=criticalservice,DC=test"
       state: domain
     register: domain_state
 
