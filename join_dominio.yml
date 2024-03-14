@@ -5,6 +5,7 @@
 #######################################################################
 ---
 - name: PlayBook Join to domain criticalservice.test
+  host: "{{ vm_hostname}}_*"
   gather_facts: yes
 - name: Create a directory if it does not exist
   ansible.builtin.file:
