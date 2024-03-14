@@ -90,4 +90,9 @@
       path: /etc/pam.d/common-session
       state: present
       line: "session optional pam_mkhomedir.so skel=/etc/skel umask=077"
+  - name: Restart rsyslog
+    ansible.builtin.service:
+      name: sssd
+      state: restarted
+  
       
