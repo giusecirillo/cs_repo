@@ -26,7 +26,6 @@
         boot_firmware: "efi"
       networks:
         - name: "{{network_name}}"
-          device_type: vmxnet3
           ip: "{{network_ip}}"
           netmask: "{{network_netmask}}"
           gateway: "{{network_gw}}"
