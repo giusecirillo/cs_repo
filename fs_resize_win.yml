@@ -5,10 +5,10 @@
   become_method: runas
   become: True
   tasks:
-    - name: Wait 300 seconds, but only start checking after 15 seconds
-      wait_for_connection:
-        delay: 15
-        timeout: 300
+    - name: Sleep for 30 seconds and continue with play
+      ansible.builtin.wait_for:
+        timeout: 30
+      delegate_to: localhost
 
     - name: Run resize FS ps1
       win_shell: C:\\criticalservice\\bin\\extend_volume_c.ps1
