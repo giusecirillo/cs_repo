@@ -20,9 +20,9 @@
     #  delegate_to: localhost
     - name: wait for the server to come back
       wait_for:
-        host: "{{vm_hostname}}"
+        host: "{{ network_ip }}"
         port: 22
-        delay: 15
+        delay: 120
       delegate_to: localhost
       ignore_errors: true
     - name: Resize FS 
