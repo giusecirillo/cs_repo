@@ -14,7 +14,7 @@
       cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
       template: "{{vm_template}}"
-      state: poweredon
+      state: poweredoff
       disk:
         - size_gb: "{{disk_size_gb}}"
           type: eagerzeroedthick
@@ -44,15 +44,11 @@
       wait_for_ip_address: false
     register: deploy
     delegate_to: localhost
-  #- name: Add host to group
-  #  ansible.builtin.add_host:
-  #    groups:
-  #      - LINUX
-  #      - DEBIAN-UBUNTU
-  #    hostname: '{{ vm_hostname }}'
-  #    ansible_ssh_host: '{{ network_ip }}'
-  #- name: Refresh inventory to ensure new instances exist in inventory
-  #  meta: refresh_inventory
+  - name: START VM
+    community.vmware.vmware_guest_powerstate:
+      state: powered-on
+    delegate_to: localhost
+    register: powerup
   - name: PRINT NAME
     debug: 
       var: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
