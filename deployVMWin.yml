@@ -42,12 +42,10 @@
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
     register: deploy
-  - name: START VM
-    community.vmware.vmware_guest:
-      name: "{{vm_hostname}}"
-      state: rebootguest
-    delegate_to: localhost
-    register: powerup
-  - name: PRINT NAME
-    debug: 
-      var: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
+  - name: "Wait for server starting up." 
+    wait_for:
+      port: 22
+      host: "{{ network_ip }}"
+      delay: 150
+  - name: "Refresh Inventory."
+    meta: refresh_inventory
