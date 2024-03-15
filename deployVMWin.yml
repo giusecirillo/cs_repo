@@ -45,9 +45,9 @@
     register: deploy
     delegate_to: localhost
   - name: Create temporary build directory
-      ansible.windows.win_tempfile:
-        state: directory
-        suffix: build
+    ansible.windows.win_tempfile:
+      state: directory
+      suffix: build
   - name: wait for the server to come back
     wait_for:
       host: "{{vm_hostname}}"
