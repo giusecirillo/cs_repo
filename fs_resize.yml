@@ -7,9 +7,6 @@
   hosts: "{{vm_hostname}}_*"
   remote_user: ansible
   gather_facts: no
-  #become_user: ansible
-  #become_method: sudo
-  #become: True
   tasks:
     - name: Sleep for 10 seconds and continue with play
       ansible.builtin.wait_for:
@@ -18,8 +15,4 @@
     - name: Resize FS 
       ansible.builtin.command:
         cmd: /bin/sh /home/ansible/bin/resize_fs.sh
-      register: fs_resize
-      when: vm_template == "TEMPLATE_DEB11" or vm_template == "TEMPLATE_RK9" or vm_template == "TEMPLATE_CENTOS8"
-    - name: Resize FS 
-      win_shell: C:\\criticalservice\\bin\\extend_volume_c.ps1
-      when: vm_template == "TEMPLATE_W2022STD"      
+      register: fs_resize    
