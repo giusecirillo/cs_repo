@@ -23,6 +23,7 @@
         memory_mb: "{{vm_memory}}"
         num_cpus: "{{vm_cpu}}"
         scsi: lsilogicsas
+        boot_firmware: "efi"
       networks:
         - name: "{{network_name}}"
           ip: "{{network_ip}}"
