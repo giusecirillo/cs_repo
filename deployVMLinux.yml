@@ -14,7 +14,7 @@
       cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
       template: "{{vm_template}}"
-      state: poweredon
+      state: restarted
       disk:
         - size_gb: "{{disk_size_gb}}"
           type: eagerzeroedthick
@@ -38,11 +38,3 @@
         hostname: "{{ vm_hostname }}"
         dns_servers:
           - "{{dns_servers[0]}}"
-  - name: RESTART VM
-    community.vmware.vmware_guest:
-      name: "{{vm_hostname}}"
-      state: rebootguest
-      #wait_for_customization: false
-      #wait_for_ip_address: false
-    #register: deploy
-    #delegate_to: localhost
