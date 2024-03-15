@@ -27,7 +27,7 @@
       networks:
         - name: "{{network_name}}"
           ip: "{{network_ip}}"
-          netmask: 255.255.255.0
+          netmask: "{{network_netmask}}"
           gateway: "{{network_gw}}"
           domain: "{{network_domain}}"
           dns_servers:
