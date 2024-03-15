@@ -56,6 +56,3 @@
   - name: PRINT NAME
     debug: 
       var: "{{deploy.instance.hw_name}}.{{deploy.instance.hw_product_uuid}}"
-  - name: Reboot a slow machine that might have lots of updates to apply
-    ansible.windows.win_reboot:
-      reboot_timeout: 3600
