@@ -8,6 +8,7 @@
   tasks:
   - name: Clone a virtual machine from Windows template and customize
     community.vmware.vmware_guest:
+      esxi_hostname: "{{ esxi_hostname }}"
       datacenter: "{{vcenter_name}}"
       validate_certs: no
       folder: "{{vcenter_folder}}"
