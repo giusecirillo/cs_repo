@@ -46,6 +46,6 @@
     wait_for:
       port: 22
       host: "{{ network_ip }}"
-      delay: 300
+      delay: 450
   - name: "Refresh Inventory."
     meta: refresh_inventory
