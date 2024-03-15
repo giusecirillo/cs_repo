@@ -39,7 +39,7 @@
         hostname: "{{ vm_hostname }}"
         dns_servers:
           - "{{dns_servers[0]}}"
-    - name: START VM
+    - name: RESTART VM
       community.vmware.vmware_guest:
         name: "{{vm_hostname}}"
         state: rebootguest
