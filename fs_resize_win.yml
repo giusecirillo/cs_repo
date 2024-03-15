@@ -10,6 +10,10 @@
   become_method: runas
   become: True
   tasks:
+    - name: Create temporary build directory
+      ansible.windows.win_tempfile:
+        state: directory
+        suffix: build
     - name: wait for the server to come back
       wait_for:
         host: "{{vm_hostname}}"
@@ -17,9 +21,5 @@
         delay: 15
       delegate_to: localhost
       ignore_errors: true
-    - name: Create temporary build directory
-      ansible.windows.win_tempfile:
-        state: directory
-        suffix: build
     - name: Resize FS 
       win_shell: C:\\criticalservice\\bin\\extend_volume_c.ps1
