@@ -4,7 +4,7 @@
 # #####################################################################
 #######################################################################
 - name: PlayBook for Resize FS DEB
-  hosts: "{{vm_hostname | upper}}_*"
+  hosts: "{{vm_hostname}}_*"
   remote_user: ansible
   gather_facts: no
   tasks:
