@@ -8,6 +8,9 @@
   remote_user: ansible
   gather_facts: no
   tasks:
+    - name: Sleep for 150 seconds and continue with play
+      ansible.builtin.wait_for:
+        timeout: 150
     - name: Resize FS 
       ansible.builtin.command:
         cmd: /bin/sh /home/ansible/bin/resize_fs.sh
