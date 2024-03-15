@@ -12,7 +12,7 @@
       datacenter: "{{vcenter_name}}"
       validate_certs: no
       folder: "{{vcenter_folder}}"
-      cluster: "{{vcenter_cluster}}"
+      #cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
       template: "{{vm_template}}"
       state: poweredon
