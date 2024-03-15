@@ -43,5 +43,6 @@
       port: 22
       host: "{{ network_ip }}"
       delay: 150
-  - name: "Wait for server starting up."
+  - name: "Refresh Inventory."
     meta: refresh_inventory
+    register: refresh
