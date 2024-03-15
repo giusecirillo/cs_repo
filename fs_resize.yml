@@ -13,7 +13,6 @@
         port: 22
         host: "{{vm_hostname | upper}}_*"
         delay: 120
-      ignore_errors: true
     
     - name: "Refresh Inventory."
       meta: refresh_inventory
