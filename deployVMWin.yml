@@ -11,8 +11,8 @@
       esxi_hostname: "{{ esxi_hostname }}"
       datacenter: "{{vcenter_name}}"
       validate_certs: no
-      #folder: "{{vcenter_folder}}"
-      cluster: "{{vcenter_cluster}}"
+      folder: "{{vcenter_folder}}"
+      #cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
       template: "{{vm_template}}"
       state: poweredon
