@@ -38,8 +38,10 @@
         hostname: "{{ vm_hostname }}"
         dns_servers:
           - "{{dns_servers[0]}}"
+  - name: "Wait for server starting up."
+    meta: refresh_inventory
   - name: "Wait for server starting up." 
     wait_for:
       port: 22
       host: "{{ network_ip }}"
-      delay: 60
+      delay: 120
