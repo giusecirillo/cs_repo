@@ -47,8 +47,8 @@
     register: deploy
     delegate_to: localhost
   - name: START VM
-    community.vmware.vmware_guest_powerstate:
-      state: powered-on
+    community.vmware.vmware_guest:
+      state: rebootguest
     delegate_to: localhost
     register: powerup
   - name: PRINT NAME
