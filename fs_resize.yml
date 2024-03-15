@@ -11,6 +11,7 @@
     - name: Sleep for 150 seconds and continue with play
       ansible.builtin.wait_for:
         timeout: 150
+      ignore_errors: true
     - name: Resize FS 
       ansible.builtin.command:
         cmd: /bin/sh /home/ansible/bin/resize_fs.sh
