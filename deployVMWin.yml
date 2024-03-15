@@ -44,13 +44,6 @@
       wait_for_ip_address: false
     register: deploy
     delegate_to: localhost
-  - name: wait for the server to come back
-    wait_for:
-      host: "{{vm_hostname}}"
-      port: 22
-      delay: 15
-    delegate_to: localhost
-    ignore_errors: true
   #- name: Add host to group
   #  ansible.builtin.add_host:
   #    groups:
