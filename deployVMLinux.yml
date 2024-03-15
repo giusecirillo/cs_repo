@@ -8,11 +8,10 @@
   tasks:
   - name: Clone a virtual machine from Linux template and customize
     community.vmware.vmware_guest:
-      esxi_hostname: "{{ esxi_hostname }}"
       datacenter: "{{vcenter_name}}"
       validate_certs: no
       folder: "{{vcenter_folder}}"
-      #cluster: "{{vcenter_cluster}}"
+      cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
       template: "{{vm_template}}"
       state: poweredon
