@@ -14,7 +14,7 @@
       cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
       template: "{{vm_template}}"
-      state: present
+      state: poweredon
       disk:
         - size_gb: "{{disk_size_gb}}"
           type: eagerzeroedthick
