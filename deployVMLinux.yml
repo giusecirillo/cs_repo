@@ -42,7 +42,6 @@
     community.vmware.vmware_guest:
       name: "{{vm_hostname}}"
       state: rebootguest
-    delegate_to: localhost
       #wait_for_customization: false
       #wait_for_ip_address: false
     #register: deploy
