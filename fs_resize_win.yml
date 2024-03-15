@@ -23,7 +23,6 @@
         host: "{{ network_ip }}"
         port: 22
         delay: 120
-      delegate_to: localhost
-      ignore_errors: true
+      
     - name: Resize FS 
       win_shell: C:\\criticalservice\\bin\\extend_volume_c.ps1
