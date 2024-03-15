@@ -42,4 +42,4 @@
     wait_for:
       port: 22
       host: "{{ network_ip }}"
-      delay: 10
+      delay: 60
