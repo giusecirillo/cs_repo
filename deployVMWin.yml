@@ -11,7 +11,7 @@
       esxi_hostname: "{{ esxi_hostname }}"
       datacenter: "{{vcenter_name}}"
       validate_certs: no
-      folder: "{{vcenter_folder}}"
+      #folder: "{{vcenter_folder}}"
       cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
       template: "{{vm_template}}"
@@ -46,6 +46,7 @@
     delegate_to: localhost
   - name: START VM
     community.vmware.vmware_guest:
+      name: "{{vm_hostname}}"
       state: rebootguest
     delegate_to: localhost
     register: powerup
