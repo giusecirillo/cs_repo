@@ -44,8 +44,6 @@
     register: deploy
   - name: "Wait for server starting up." 
     wait_for:
-      port: 22
-      host: "{{ network_ip }}"
-      delay: 450
+      timeout: 400
   - name: "Refresh Inventory."
     meta: refresh_inventory
