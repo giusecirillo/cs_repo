@@ -10,6 +10,8 @@
   become_method: runas
   become: True
   tasks:
+    - name: Wait for connection (600s default)
+      ansible.builtin.wait_for_connection:
     - name: Create temporary build directory
       ansible.windows.win_tempfile:
         state: directory
