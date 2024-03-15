@@ -16,6 +16,7 @@
         port: 22
         delay: 15
       delegate_to: localhost
+      ignore_errors: true
     - name: Create temporary build directory
       ansible.windows.win_tempfile:
         state: directory
