@@ -5,7 +5,7 @@
 #######################################################################
 - name: PlayBook for Resize FS Windows
   hosts: "{{vm_hostname}}_*"
-  gather_facts: no
+  gather_facts: yes
   remote_user: ansible
   become_method: runas
   become: True
