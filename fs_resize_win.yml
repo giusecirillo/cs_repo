@@ -22,7 +22,7 @@
       wait_for:
         host: "{{ network_ip }}"
         port: 22
-        delay: 150
+        delay: 15
       
     - name: Resize FS 
       win_shell: C:\\criticalservice\\bin\\extend_volume_c.ps1
