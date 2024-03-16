@@ -6,7 +6,7 @@
 - name: PlayBook for Resize FS DEB
   hosts: "{{vm_hostname}}_*"
   remote_user: ansible
-  gather_facts: yes
+  gather_facts: no
   tasks:
     - name: "Wait for server starting up." 
       wait_for:
