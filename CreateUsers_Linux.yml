@@ -7,7 +7,7 @@
   hosts: localhost
   tasks:
     - name: extract Username from all dictionaries
-        msg: users
+        var: "{{ users }}"
       #loop: "{{ users }}  
     
 #      loop: "{{ users.list }}"
