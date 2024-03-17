@@ -5,7 +5,7 @@
   gather_facts: false
   tasks:       
     - ansible.windows.win_domain_membership:
-      workgroup_name: workgroup
+      #workgroup_name: workgroup
       domain_admin_user: '{{ domain_admin_user }}'
       domain_admin_password: '{{ domain_admin_password }}'
       state: workgroup
