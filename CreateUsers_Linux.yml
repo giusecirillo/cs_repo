@@ -5,16 +5,21 @@
 ########################################################################
 - name: create users from list
   hosts: localhost
+  Username: "{{ item.Username }}"
+  First_Name: "{{ item.First_name }}"
+  Last_Name: "{{ item.Last_name }}"
+  Password: "{{ item.Password }}"
   tasks:
     - name: extract Username from all dictionaries
       #debug:
       register: users
       debug:
         msg: "{{ Username }}"
-    - name: extract single Username from all dictionaries
-      debug:
-        msg: "{{ item.Username }}"
-      loop: "{{ users.split('\n') }}"
+        msg: "{{ First_Name }}"
+        msg: "{{ Last_Name }}"
+        msg: "{{ Password }}"
+        msg: "{{ users }}"
+
     #- name: create users from the csv
     #  user:
     #    name: "{{ item.Username }}"
