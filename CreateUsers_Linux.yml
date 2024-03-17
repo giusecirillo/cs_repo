@@ -11,10 +11,10 @@
       register: users
       debug:
         msg: "{{ users }}"
-   - name: extract single Username from all dictionaries
-     debug:
-      msg: "{{ item.Username }}"
-     loop: "{{ users.list }}" 
+    - name: extract single Username from all dictionaries
+      debug:
+       msg: "{{ item.Username }}"
+      loop: "{{ users.list }}" 
         #var: "{{ users }}"
       #loop: "{{ users }}  
     
