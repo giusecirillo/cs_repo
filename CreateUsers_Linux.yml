@@ -7,7 +7,6 @@
   hosts: localhost
   tasks:
     - name: extract Username from all dictionaries
-      var:
         msg: "{{ users.split ('\n') }}"
       
     
