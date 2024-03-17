@@ -7,7 +7,8 @@
   hosts: localhost
   tasks:
     - name: Check users
-        var: "{{ users }}"
+        var: 
+          - "{{ users }}"
     - name: extract Username from all dictionaries
       debug:
         msg: "{{ item.Username }}"
