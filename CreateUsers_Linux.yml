@@ -6,10 +6,10 @@
 - name: create users from list
   hosts: localhost
   utente:
-    - "{{ Username }}"
-    - "{{ First_Name }}"
-    - "{{ Last_Name }}"
-    - "{{ Password }}"
+    user: "{{ Username }}"
+    name1: "{{ First_Name }}"
+    name2: "{{ Last_Name }}"
+    password: "{{ Password }}"
   
   tasks:
     - name: extract Username from all dictionaries
