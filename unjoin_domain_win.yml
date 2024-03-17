@@ -6,6 +6,6 @@
   tasks:       
     - ansible.windows.win_domain_membership:
       workgroup_name: workgroup
-      domain_admin_user: '{{ win_domain_admin_user }}'
-      domain_admin_password: '{{ win_domain_admin_password }}'
+      domain_admin_user: '{{ domain_admin_user }}'
+      domain_admin_password: '{{ domain_admin_password }}'
       state: workgroup
