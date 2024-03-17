@@ -10,6 +10,7 @@
     First_Name: "{{ First_Name }}"
     Last_Name: "{{ Last_Name }}"
     password: "{{ Password }}"
+    users: "{{ users }}"
   tasks:
     - name: extract User dictionaries
       debug:
