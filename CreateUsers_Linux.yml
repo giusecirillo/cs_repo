@@ -12,7 +12,7 @@
         name1: "{{ First_Name }}"
         name2: "{{ Last_Name }}"
         password: "{{ Password }}"
-      debug:
+    - debug:
         msg:: "{{ utente.Username }}"
         #var2: "{{ First_Name }}"
         #var3: "{{ Last_Name }}"
