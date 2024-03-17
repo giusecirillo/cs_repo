@@ -8,14 +8,21 @@
   become: True
   gather_facts: false
   tasks:
-  - ansible.windows.win_domain_membership:
-      dns_domain_name: criticalservice.test
-      hostname: "{{vm_hostname}}"
-      domain_admin_user: test.ansij
-      domain_admin_password: Br1sp0tt0C3r3al1x!
-      domain_ou_path: "--computer-ou=OU=Linux_SRV,OU=02_Servers,OU=01-CRITICALSERVICE,DC=criticalservice,DC=test CRITICALSERVICE.TEST"
-      state: domain
-    register: domain_state
-
-  - ansible.windows.win_reboot:
-    when: domain_state.reboot_required
+    - win_domain_membership:
+        workgroup_name: workgroup
+        domain_admin_user: test.ansij
+        domain_admin_password: Br1sp0tt0C3r3al1x!
+        state: workgroup
+    - ansible.windows.win_reboot:
+        when: domain_state.reboot_required
+    - ansible.windows.win_domain_membership:
+        dns_domain_name: criticalservice.test
+        hostname: "{{vm_hostname}}"
+        domain_admin_user: test.ansij
+        domain_admin_password: Br1sp0tt0C3r3al1x!
+        domain_ou_path: "--computer-ou=OU=Linux_SRV,OU=02_Servers,OU=01-CRITICALSERVICE,DC=criticalservice,DC=test CRITICALSERVICE.TEST"
+        state: domain
+      register: domain_state
+  
+    - ansible.windows.win_reboot:
+        when: domain_state.reboot_required
