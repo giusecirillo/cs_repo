@@ -14,7 +14,7 @@
       cluster: "{{vcenter_cluster}}"
       name: "{{vm_hostname}}"
       template: "{{vm_template}}"
-      state: poweredon
+      #state: poweredon
       disk:
         - size_gb: "{{disk_size_gb}}"
           type: eagerzeroedthick
@@ -35,6 +35,8 @@
             - "{{dns_servers[0]}}"
             - "{{dns_servers[1]}}"
       customization:
+        password: "{{ vm_password }}"
+        existing_vm: True
         domain: "{{network_domain}}"
         hostname: "{{vm_hostname}}"
         timezone: 110
