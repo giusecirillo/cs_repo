@@ -8,7 +8,7 @@
   tasks:
     - name: extract Username from all dictionaries
         msg: "{{ users }}"
-      
+      loop: "{{ users }}  
     
 #      loop: "{{ users.list }}"
      #delegate_to: localhost 
