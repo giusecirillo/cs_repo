@@ -18,7 +18,7 @@
     - name: extract User from users
       debug:
         #msg: "{{ users | split(',') }}"
-        msg: "{{ users | split(',') }}"
+        msg: "{{ msg | split(',') }}"
       #loop: "{{users}}
       #var2: "{{ First_Name }}"
       #var3: "{{ Last_Name }}"
