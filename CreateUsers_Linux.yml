@@ -3,11 +3,10 @@
 # PlayBook create by Cirillo Giuseppe
 # ######################################################################
 ########################################################################
-- name: create users from csv file
+- name: create users from list
   hosts: localhost
   tasks:
     - name: display user_list data
-      debug:
       var: users.list
     - name: Check users
       debug:
