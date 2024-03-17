@@ -13,7 +13,7 @@
         msg: "{{ users }}"
     - name: extract single Username from all dictionaries
       debug:
-       msg: "{{ item.Username }}"
+       msg: "{{ item }}"
       loop: "{{ users }}" 
         #var: "{{ users }}"
       #loop: "{{ users }}  
