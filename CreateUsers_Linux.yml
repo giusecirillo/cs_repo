@@ -6,12 +6,10 @@
 - name: create users from list
   hosts: localhost
   tasks:
- #   - name: Check users
- #       register: users
     - name: extract Username from all dictionaries
-      debug:
-        msg: "{{ users.Username }}"
-      loop: "{{ users.list }}"
+      var:
+        msg: "{{ users.split ('\n') }}"
+      
     
 #      loop: "{{ users.list }}"
      #delegate_to: localhost 
