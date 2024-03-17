@@ -7,14 +7,13 @@
   hosts: localhost
   tasks:
     - name: extract Username from all dictionaries
-      register: uers
       debug:
         msg: "{{ Username }}"
         msg: "{{ First_Name }}"
         msg: "{{ Last_Name }}"
         msg: "{{ Password }}"
         msg: "{{ users }}"
-        msg: "{{ uers }}"
+    
 
     #- name: create users from the csv
     #  user:
