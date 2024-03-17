@@ -6,8 +6,8 @@
 - name: create users from list
   hosts: localhost
   tasks:
-    - name: Check users
-        register: users
+ #   - name: Check users
+ #       register: users
     - name: extract Username from all dictionaries
       debug:
         msg: "{{ users }}"
