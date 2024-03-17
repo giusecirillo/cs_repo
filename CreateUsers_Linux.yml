@@ -8,8 +8,8 @@
   tasks:
     - name: Check users
       debug:
-        msg: "{{ item.Username }}"
-      loop: "{{ users.list }}"
+        msg: "{{ users }}"
+#      loop: "{{ users.list }}"
      #delegate_to: localhost 
    #- name: create users from the csv
    #   user:
