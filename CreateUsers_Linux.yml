@@ -5,13 +5,12 @@
 ########################################################################
 - name: create users from list
   hosts: localhost
-  Username: "{{ Username }}"
-  First_Name: "{{ First_name }}"
-  Last_Name: "{{ Last_name }}"
-  Password: "{{ Password }}"
   tasks:
     - name: extract Username from all dictionaries
-      #debug:
+      Username: "{{ Username }}"
+      First_Name: "{{ First_name }}"
+      Last_Name: "{{ Last_name }}"
+      Password: "{{ Password }}"      #debug:
       register: uers
       debug:
         msg: "{{ Username }}"
