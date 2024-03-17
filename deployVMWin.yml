@@ -28,7 +28,7 @@
           ip: "{{network_ip}}"
           netmask: "{{network_netmask}}"
           gateway: "{{network_gw}}"
-          domain: "{{network_domain}}"
+          #domain: "{{network_domain}}"
           type: "{{ip_mode}}"
           start_connected: True
           dns_servers:
@@ -37,7 +37,7 @@
       customization:
         password: "{{ vm_password }}"
         existing_vm: True
-        domain: "{{network_domain}}"
+        #domain: "{{network_domain}}"
         hostname: "{{vm_hostname}}"
         timezone: 110
         dns_servers:
