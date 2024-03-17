@@ -5,10 +5,10 @@
 ########################################################################
 - name: create users from list
   hosts: localhost
-  Username: "{{ item.Username }}"
-  First_Name: "{{ item.First_name }}"
-  Last_Name: "{{ item.Last_name }}"
-  Password: "{{ item.Password }}"
+  Username: "{{ Username }}"
+  First_Name: "{{ First_name }}"
+  Last_Name: "{{ Last_name }}"
+  Password: "{{ Password }}"
   tasks:
     - name: extract Username from all dictionaries
       #debug:
