@@ -9,7 +9,7 @@
   gather_facts: false
   tasks:
     - ansible.windows.win_domain_membership:
-        dns_domain_name: criticalservice.test
+        dns_domain_name: CRITICALSERVICE.TEST
         hostname: "{{vm_hostname}}"
         domain_admin_user: test.ansij
         domain_admin_password: Br1sp0tt0C3r3al1x!
