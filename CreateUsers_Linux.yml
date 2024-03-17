@@ -13,7 +13,7 @@
   tasks:
     - name: extract Username from all dictionaries
       debug:
-        msg:: "{{ var.userid }}"
+        msg:: "{{ vars }}"
       #var2: "{{ First_Name }}"
       #var3: "{{ Last_Name }}"
         #var4: "{{ Password }}"
