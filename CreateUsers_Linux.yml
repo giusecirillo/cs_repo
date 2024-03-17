@@ -6,8 +6,6 @@
 - name: create users from list
   hosts: localhost
   tasks:
-    - name: display user_list data
-      var: "{{ users }}"
     - name: Check users
       debug:
       msg: "{{ item.Username }}"
