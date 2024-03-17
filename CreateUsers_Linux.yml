@@ -7,11 +7,11 @@
   hosts: localhost
   tasks:
     - name: display user_list data
-      var: users.list
+      var: "{{ users }}"
     - name: Check users
       debug:
       msg: "{{ item.Username }}"
-      loop: "{{ users }}"
+      loop: "{{ users.list }}"
      #delegate_to: localhost 
    #- name: create users from the csv
    #   user:
