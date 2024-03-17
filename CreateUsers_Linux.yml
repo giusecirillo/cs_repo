@@ -7,8 +7,12 @@
   hosts: localhost
   tasks:
     - name: Check users
+        var: "{{ users }}"
+    - name: extract Username from all dictionaries
       debug:
-        msg: "{{ users }}"
+        msg: "{{ item.Username }}"
+      loop: "{{ users.list }}"
+    
 #      loop: "{{ users.list }}"
      #delegate_to: localhost 
    #- name: create users from the csv
