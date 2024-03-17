@@ -13,7 +13,7 @@
         hostname: "{{vm_hostname}}"
         domain_admin_user: '{{ domain_admin_user }}'
         domain_admin_password: '{{ domain_admin_password }}'
-        domain_ou_path: "OU=Server Reboot 4:00,OU=02_Servers,OU=01-CRITICALSERVICE,DC=criticalservice,DC=test"
+        domain_ou_path: '{{ mv_ou }}' #"OU=Server Reboot 4:00,OU=02_Servers,OU=01-CRITICALSERVICE,DC=criticalservice,DC=test"
         #domain_ou_path: "OU=Linux_SRV,OU=02_Servers,OU=01-CRITICALSERVICE,DC=criticalservice,DC=test"
         state: domain
       register: domain_state
