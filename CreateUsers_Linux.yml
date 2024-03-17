@@ -8,10 +8,10 @@
   tasks:
     - name: extract Username from all dictionaries
       debug:
-        var: "{{ Username }}"
-        var: "{{ First_Name }}"
-        var: "{{ Last_Name }}"
-        var: "{{ Password }}"
+        var1: "{{ Username }}"
+        var2: "{{ First_Name }}"
+        var3: "{{ Last_Name }}"
+        var4: "{{ Password }}"
         #var: "{{ users }}"
     
 
