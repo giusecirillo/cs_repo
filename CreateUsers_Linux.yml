@@ -8,7 +8,7 @@
   tasks:
     - name: extract Username from all dictionaries
       debug:
-        var: "{{ users }}"
+        var: "{{ users.list }}"
       #loop: "{{ users }}  
     
 #      loop: "{{ users.list }}"
