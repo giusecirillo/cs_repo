@@ -9,7 +9,7 @@
   gather_facts: false
   tasks:
     - ansible.windows.win_domain_membership:
-        dns_domain_name: CRITICALSERVICE.TEST
+        dns_domain_name: criticalservice.test
         hostname: "{{vm_hostname}}"
         domain_admin_user: test.ansij
         domain_admin_password: Br1sp0tt0C3r3al1x!
@@ -17,5 +17,5 @@
         state: domain
       register: domain_state
   
-    #- ansible.windows.win_reboot:
-    #    when: domain_state.reboot_required
+    - ansible.windows.win_reboot:
+        when: domain_state.reboot_required
