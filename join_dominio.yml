@@ -50,8 +50,8 @@
       ignore_errors: true
     
     - name: Join domain realm join
-      ansible.builtin.shell: echo "Br1sp0tt0C3r3al1x!" | realm join -v -U test.ansij --computer-ou=OU=Linux_SRV,OU=02_Servers,OU=01-CRITICALSERVICE,DC=criticalservice,DC=test CRITICALSERVICE.TEST
-          
+      ansible.builtin.shell: echo '{{ win_domain_admin_password }}' | realm join -v -U '{{ win_domain_admin_user }}' '{{ vm_ou }}' CRITICALSERVICE.TEST
+    
     - name: Prepare sssd.conf
       ansible.builtin.copy:
         dest: "/etc/sssd/sssd.conf"
