@@ -5,20 +5,20 @@
 ########################################################################
 - name: create users from list
   hosts: localhost
-  vars:
-    Username: "{{ Username }}"
-    First_Name: "{{ First_Name }}"
-    Last_Name: "{{ Last_Name }}"
-    password: "{{ Password }}"
-    users: "{{ users }}"
+  #vars:
+  #  Username: "{{ Username }}"
+  #  First_Name: "{{ First_Name }}"
+  #  Last_Name: "{{ Last_Name }}"
+  #  password: "{{ Password }}"
+  #  users: "{{ users }}"
   tasks:
     - name: extract User dictionaries
       debug:
-        msg: "{{ Username }},{{ First_Name }},{{ Last_Name }},{{ Password }}"
-    - name: extract User from users
-      debug:
+        msg: "{{ Username }}"
+    #- name: extract User from users
+    #  debug:
         #msg: "{{ users | split(',') }}"
-        msg: "{{ msg | split(',') }}"
+    #    msg: "{{ msg | split(',') }}"
       #loop: "{{users}}
       #var2: "{{ First_Name }}"
       #var3: "{{ Last_Name }}"
