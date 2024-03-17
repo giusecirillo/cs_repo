@@ -7,10 +7,10 @@
   hosts: localhost
   tasks:
     - name: extract Username from all dictionaries
-      Username: "{{ Username }}"
-      First_Name: "{{ First_name }}"
-      Last_Name: "{{ Last_name }}"
-      Password: "{{ Password }}"      #debug:
+        Username: "{{ Username }}"
+        First_Name: "{{ First_name }}"
+        Last_Name: "{{ Last_name }}"
+        Password: "{{ Password }}"      #debug:
       register: uers
       debug:
         msg: "{{ Username }}"
