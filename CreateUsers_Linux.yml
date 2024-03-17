@@ -8,9 +8,9 @@
   tasks:
     - name: extract Username from all dictionaries
       debug:
-        msg: "{{ Username }}"
-        msg: "{{ First_Name }}"
-        msg: "{{ Last_Name }}"
+        var: "{{ Username }}"
+        var: "{{ First_Name }}"
+        var: "{{ Last_Name }}"
         msg: "{{ Password }}"
         msg: "{{ users }}"
     
