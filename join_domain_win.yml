@@ -13,7 +13,7 @@
         hostname: "{{vm_hostname}}"
         domain_admin_user: test.ansij
         domain_admin_password: Br1sp0tt0C3r3al1x!
-        domain_ou_path: "--computer-ou=OU=Server Reboot 4:00,OU=02_Servers,OU=01-CRITICALSERVICE,DC=criticalservice,DC=test"
+        domain_ou_path: "OU=Server Reboot 4:00,OU=02_Servers,OU=01-CRITICALSERVICE,DC=criticalservice,DC=test"
         state: domain
       register: domain_state
   
