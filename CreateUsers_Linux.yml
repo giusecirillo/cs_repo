@@ -6,14 +6,14 @@
 - name: create users from list
   hosts: localhost
   vars:
-    userid: "{{ Username }}"
-    name1: "{{ First_Name }}"
-    name2: "{{ Last_Name }}"
+    Username: "{{ Username }}"
+    First_Name: "{{ First_Name }}"
+    Last_Name: "{{ Last_Name }}"
     password: "{{ Password }}"
   tasks:
     - name: extract Username from all dictionaries
       debug:
-        msg: "{{ vars }}"
+        msg: "{{ Username }}"
       #var2: "{{ First_Name }}"
       #var3: "{{ Last_Name }}"
         #var4: "{{ Password }}"
