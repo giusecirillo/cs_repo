@@ -15,10 +15,10 @@
       debug:
         msg: |
           user: "{{ item.Username }}"
-          fn: "{{item.firstname}}"
-          ln: "{{ item.lastname }}"
-          pwd: "{{ item.pwd }}"
-      loop: "{{ users.split('\n') }}"
+          fn: "{{item.First_Name}}"
+          ln: "{{ item.LastName }}"
+          pwd: "{{ item.password }}"
+      loop: "{{ users }}"
     #- name: create users from the csv
     #  user:
     #    name: "{{ item.Username }}"
