@@ -7,9 +7,12 @@
   hosts: localhost
   tasks:
     - name: extract Username from all dictionaries
+      #debug:
+      register: users
       debug:
-        var: "{{ users.list }}"
-      loop: "{{ users }}  
+        msg: "{{ users }}"
+        #var: "{{ users }}"
+      #loop: "{{ users }}  
     
 #      loop: "{{ users.list }}"
      #delegate_to: localhost 
