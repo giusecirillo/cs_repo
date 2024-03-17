@@ -11,9 +11,12 @@
     Last_Name: "{{ Last_Name }}"
     password: "{{ Password }}"
   tasks:
-    - name: extract Username from all dictionaries
+    - name: extract User dictionaries
       debug:
         msg: "{{ Username }},{{ First_Name }},{{ Last_Name }},{{ Password }}"
+    - name: extract User from users
+      debug:
+        msg: "{{ users }}"
       #var2: "{{ First_Name }}"
       #var3: "{{ Last_Name }}"
         #var4: "{{ Password }}"
