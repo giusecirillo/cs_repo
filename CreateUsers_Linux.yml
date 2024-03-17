@@ -10,11 +10,11 @@
       #debug:
       register: users
       debug:
-        msg: "{{ users.list }}"
+        msg: "{{ users }}"
     - name: extract single Username from all dictionaries
       debug:
         msg: "{{ item.Username }}"
-      loop: "{{ users.list }}"
+      loop: "{{ users }}"
     #- name: create users from the csv
     #  user:
     #    name: "{{ item.Username }}"
