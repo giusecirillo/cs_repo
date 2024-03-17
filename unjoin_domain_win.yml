@@ -9,7 +9,3 @@
         domain_admin_user: '{{ domain_admin_user }}'
         domain_admin_password: '{{ domain_admin_password }}'
         state: workgroup
-    - name: Remove linux computer from Active Directory using a windows machine
-      win_domain_computer:
-        name: "{{vm_hostname}}"
-        state: absent
