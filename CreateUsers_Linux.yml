@@ -14,7 +14,7 @@
     - name: extract single Username from all dictionaries
       debug:
         msg: "{{ item.Username }}"
-      loop: "{{ users }}"
+      loop: "{{ users.split("\n") }}"
     #- name: create users from the csv
     #  user:
     #    name: "{{ item.Username }}"
