@@ -14,7 +14,7 @@
     - name: extract single Username from all dictionaries
       debug:
         msg: |
-          user: "{{ item.username }}"
+          user: "{{ item.Username }}"
           fn: "{{item.firstname}}"
           ln: "{{ item.lastname }}"
           pwd: "{{ item.pwd }}"
