@@ -10,8 +10,8 @@
         register: users
     - name: extract Username from all dictionaries
       debug:
-        msg: "{{ item.Username }}"
-      loop: "{{ users.list }}"
+        msg: "{{ users }}"
+#      loop: "{{ users.list }}"
     
 #      loop: "{{ users.list }}"
      #delegate_to: localhost 
