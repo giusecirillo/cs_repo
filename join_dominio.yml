@@ -50,7 +50,7 @@
       ignore_errors: true
     
     - name: Join domain realm join
-      ansible.builtin.shell: echo '{{ win_domain_admin_password }}' | realm join -v -U '{{ win_domain_admin_user }}' '{{ vm_ou }}'
+      ansible.builtin.shell: echo '{{ domain_admin_password }}' | realm join -v -U '{{ domain_admin_user }}' '{{ vm_ou }}'
     
     - name: Prepare sssd.conf
       ansible.builtin.copy:
