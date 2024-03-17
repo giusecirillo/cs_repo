@@ -13,8 +13,21 @@
         msg: "{{ users }}"
     - name: extract single Username from all dictionaries
       debug:
-       msg: "{{ item }}"
-      loop: "{{ users.split('\n') }}" 
+      msg: |
+        user: "{{ item.username }}"
+        fn: "{{item.firstname}}"
+        ln: "{{ item.lastname }}"
+        pwd: "{{ item.pwd }}"
+      loop: "{{ users.split('\n') }}"
+    #- name: create users from the csv
+    #  user:
+    #    name: "{{ item.Username }}"
+    #    append: true
+    #    password: "{{ item.Password | password_hash('sha512') }}"
+    #    comment: "{{ item.First_Name }} {{ item.Last_Name }}"
+    #    state: present
+     #loop: "{{ user_list.list }}"
+     #become: true
         #var: "{{ users }}"
       #loop: "{{ users }}  
     
