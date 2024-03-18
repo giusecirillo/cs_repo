@@ -23,7 +23,7 @@
     - name: Print server role info
       ansible.builtin.debug:
         msg: "{{ item }}"
-      loop: "{{ elenco| list }}"
+      loop: "{{ elenco }}"
     #- name: extract User from users
     #  debug:
         #msg: "{{ users | split(',') }}"
