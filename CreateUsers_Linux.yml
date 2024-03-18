@@ -14,7 +14,7 @@
   tasks:
     - name: extract User dictionaries
       debug:
-        msg: "{{ item.Username }}"
+        msg: "{{ item }}"
       loop: "{{ Username.split('\n') }}"
     #- name: extract User from users
     #  debug:
