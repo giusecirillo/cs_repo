@@ -18,6 +18,10 @@
     #  loop: "{{ Username | dict2items }}"
       loop: "{{ Username.split('\n') }}"
       register: elenco
+    - name: Print server role info
+      ansible.builtin.debug:
+        msg: "Server: {{ item.key }}, Role: {{ item.value }}"
+      loop: "{{ elenco | dict2items }}"
     #- name: extract User from users
     #  debug:
         #msg: "{{ users | split(',') }}"
