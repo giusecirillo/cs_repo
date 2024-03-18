@@ -15,7 +15,7 @@
     - name: extract User dictionaries
       debug:
         msg: "u: {{ item.key }}, p: {{ item.value }}"
-      loop: "{{ Username.split('\n') | dict2items }}"
+      loop: "{{ Username | dict2items }}"
     #  loop: "{{ Username.split('\n') }}"
     #- name: extract User from users
     #  debug:
