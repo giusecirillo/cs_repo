@@ -13,8 +13,7 @@
   #  users: "{{ users }}"
   tasks:
     - name: extract User dictionaries
-      debug:
-        msg: "{{ item }}"
+        userpass: "{{ item }}"
       loop: "{{ Username.split('\n') }}"
     #- name: extract User from users
     #  debug:
