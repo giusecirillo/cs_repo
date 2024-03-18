@@ -14,9 +14,10 @@
   tasks:
     - name: extract User dictionaries
       debug:
-        msg: "u: {{ item.key }}, p: {{ item.value }}"
-      loop: "{{ Username | dict2items }}"
-    #  loop: "{{ Username.split('\n') }}"
+        msg: "{{ item }}"
+    #  loop: "{{ Username | dict2items }}"
+      loop: "{{ Username.split('\n') }}"
+      register: elenco
     #- name: extract User from users
     #  debug:
         #msg: "{{ users | split(',') }}"
