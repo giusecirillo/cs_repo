@@ -22,8 +22,8 @@
       register: elenco
     - name: Print server role info
       ansible.builtin.debug:
-        msg: "{{ elenco }}"
-    #  loop: "{{ elenco }}"
+        msg: "{{ item }}"
+      loop: "{{ elenco.msg.results }}"
     #- name: extract User from users
     #  debug:
         #msg: "{{ users | split(',') }}"
