@@ -15,6 +15,7 @@
     - name: extract User dictionaries
       debug:
         msg: "{{ Username }}"
+      loop: "{{ vars }}"
     #- name: extract User from users
     #  debug:
         #msg: "{{ users | split(',') }}"
