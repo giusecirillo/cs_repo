@@ -17,13 +17,13 @@
         msg: "{{ item }}"
     #  loop: "{{ Username | dict2items }}"
       loop: 
-        - "{{ Username.split('\n') }}"
-        - "{{ Password.split('\n') }}"
+        - "{{ Username.split('\n') |list }}"
+        - "{{ Password.split('\n') |list }}"
       register: elenco
     - name: Print server role info
       ansible.builtin.debug:
         msg: "{{ item }}"
-      loop: "{{ elenco.msg }}"
+      loop: "{{ elenco.msg| list }}"
     #- name: extract User from users
     #  debug:
         #msg: "{{ users | split(',') }}"
