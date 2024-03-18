@@ -14,7 +14,7 @@
   tasks:
     - name: extract User dictionaries
       ansible_module:
-        userpass: "{{ item }}"
+        key: "{{ item }}"
       loop: "{{ Username.split('\n') }}"
     #- name: extract User from users
     #  debug:
