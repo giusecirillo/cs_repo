@@ -12,14 +12,6 @@
   #  password: "{{ Password }}"
   #  users: "{{ users }}"
   tasks:
-    - name: Iterate over multiple-key dictionary using loop with 'dict' lookup - succeeds
-      vars:
-        cur_item: "key={{current_item.key}} value={{current_item.value}}"
-      debug: var=cur_item
-      loop:
-        "{{lookup('dict', Username)}}"
-      loop_control:
-        loop_var: current_item
     - name: extract User dictionaries
       debug:
         msg: "{{ item }}"
@@ -28,6 +20,14 @@
         - "{{ Username.split('\n') |list }}"
         - "{{ Password.split('\n') |list }}"
       register: elenco
+    - name: Iterate over multiple-key dictionary using loop with 'dict' lookup - succeeds
+      vars:
+        cur_item: "key={{current_item.key}} value={{current_item.value}}"
+      debug: var=cur_item
+      loop:
+        "{{lookup('dict', Username)}}"
+      loop_control:
+        loop_var: current_item
     - name: Print server role info
       ansible.builtin.debug:
         msg: "{{ item }}"
