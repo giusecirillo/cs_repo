@@ -17,7 +17,7 @@
         msg: "{{ item }}"
     #  loop: "{{ Username | dict2items }}"
       loop: 
-        - "{{ Username.split('\n') }} 
+        - "{{ Username.split('\n') }}"
         - "{{ Password.split('\n') }}"
       register: elenco
     - name: Print server role info
