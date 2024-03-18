@@ -39,8 +39,8 @@
       ansible.builtin.copy:
         dest: "/etc/resolv.conf"
         content: |
-        domain criticalservice.test
-        nameserver 10.10.160.215
+          domain criticalservice.test
+          nameserver 10.10.160.215
               
     - name: Join domain 
       ansible.builtin.command:
