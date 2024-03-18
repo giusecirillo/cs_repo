@@ -35,12 +35,13 @@
         state: present
         line: "%domain\\\ admins@criticalservice.test ALL=(ALL) NOPASSWD: ALL"
     
-    - name: Add domain-entry on resolv.conf
-      lineinfile:
-        path: /etc/resolv.conf
-        state: present
-        line: "domain criticalservice.test"
-      
+    - name: Prepare sssd.conf
+      ansible.builtin.copy:
+        dest: "/etc/sssd/sssd.conf"
+        content: |
+        domain criticalservice.test
+        nameserver 10.10.130.215
+              
     - name: Join domain 
       ansible.builtin.command:
         cmd: "{{ item }}"
